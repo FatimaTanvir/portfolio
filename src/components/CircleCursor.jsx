@@ -2,17 +2,21 @@ import React, { useState, useEffect } from 'react';
 
 export default function CircleCursor({
   dotSize = 6,
-  dotColor = "#000000",
+  dotColor,
   ringSize = 32,
-  ringColor = "#000000",
+  ringColor,
   ringBorderWidth = 2,
   hoverScale = 1.5,
   clickScale = 0.75,
   animationDuration = 200,
   blendMode = "normal",
   opacity = 1,
-  hideOnMobile = true
+  hideOnMobile = true,
+  isDark = false  // Add isDark prop
 }) {
+  // Set colors based on dark mode
+  const actualDotColor = dotColor || (isDark ? "#FFFFFF" : "#000000");
+  const actualRingColor = ringColor || (isDark ? "#FFFFFF" : "#000000");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hidden, setHidden] = useState(true);
   const [linkHovered, setLinkHovered] = useState(false);
@@ -71,7 +75,7 @@ export default function CircleCursor({
       document.body.style.cursor = "auto";
       styleElement.remove();
     };
-  }, [hideOnMobile]);
+  }, [hideOnMobile, isDark]);
 
   // Hide on mobile if enabled
   if (typeof window !== "undefined") {
@@ -92,14 +96,14 @@ export default function CircleCursor({
           top: 0,
           width: `${dotSize}px`,
           height: `${dotSize}px`,
-          backgroundColor: dotColor,
+          backgroundColor: actualDotColor,
           borderRadius: "50%",
           transform: `translate(${position.x - dotSize / 2}px, ${position.y - dotSize / 2}px)`,
           pointerEvents: "none",
           zIndex: 10000,
           mixBlendMode: blendMode,
           opacity: hidden ? 0 : opacity,
-          transition: `opacity ${transitionSpeed} ease`
+          transition: `opacity ${transitionSpeed} ease, background-color 300ms ease`
         }}
       />
       {/* Ring */}
@@ -110,14 +114,14 @@ export default function CircleCursor({
           top: 0,
           width: `${ringSize}px`,
           height: `${ringSize}px`,
-          border: `${ringBorderWidth}px solid ${ringColor}`,
+          border: `${ringBorderWidth}px solid ${actualRingColor}`,
           borderRadius: "50%",
           transform: `translate(${position.x - ringSize / 2}px, ${position.y - ringSize / 2}px) scale(${currentScale})`,
           pointerEvents: "none",
           zIndex: 9999,
           mixBlendMode: blendMode,
           opacity: hidden ? 0 : opacity,
-          transition: `all ${transitionSpeed} ease`,
+          transition: `all ${transitionSpeed} ease, border-color 300ms ease`,
           backgroundColor: "transparent"
         }}
       />

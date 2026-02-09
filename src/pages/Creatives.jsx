@@ -1,29 +1,27 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import { motion } from 'framer-motion'
+import CircularCarousel from '../components/CircularCarousel'
+import Footer from '../components/Footer'
 
 export default function Creatives() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-screen bg-white flex flex-col overflow-hidden">
       <Navbar />
-      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-8">
-      
-        <h1 className="text-4xl md:text-5xl lg:text-4xl font-serif mb-4">
+      <div className="flex-1 flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 pt-4 sm:pt-6">
+
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-2 sm:mb-3 text-center px-2">
             I like to <span className="text-blue-500">get creative</span>, and <span className="text-green-500">make things</span>.
           </h1>
-        <p className="text-sm sm:text-base md:text-lg text-gray-500 mb-8 sm:mb-12 md:mb-16 lg:mb-20 text-center">
-          Pottery has been my recent favorite artistic hobby! 
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 mb-2 sm:mb-5 text-center px-2">
+          Here a few peices from crocheting and making art from clay!
         </p>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="mt-20 pt-3 border-t border-gray-200 text-center text-gray-500"
-        >
-          <p className="italic">More entries coming soon...</p>
-        </motion.div>
-    </div>
+
+        <div className="-mt-8 sm:-mt-10 md:-mt-12 w-full flex-1">
+          <CircularCarousel />
+        </div>
+      </div>
+
+      <Footer />
     </div>
   )
 }

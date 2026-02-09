@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import EyeTracker from '../components/Eyetracker'
 import { useTypewriter } from '../components/Typewriter'
-import { Mail, Instagram, Linkedin, Paperclip } from 'lucide-react'
+import Footer from '../components/Footer'
 import MagnetizingLines from '../components/MagnetizingLines'
+import CircleCursor from '../components/CircleCursor'
 
 export default function LandingPage() {
   const displayedText = useTypewriter("Hi, I'm Fatima.", 100);
   const navigate = useNavigate();
+  const [isDark, setIsDark] = useState(false);
 
   const CharacterCard = ({ image, alt, route }) => {
     return (
@@ -48,13 +51,22 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Magnetizing Lines Background */}
-      <MagnetizingLines
+      {!isDark && (
+        <MagnetizingLines
         lineColor="rgba(0, 0, 0, 0.15)"
         opacity={0.6}
         particleCount={60}
       />
+      )}
+      <CircleCursor isDark={isDark} />
+      <Navbar isDark={isDark} setIsDark={setIsDark} showDarkToggle={true} />
+      <EyeTracker isDark={isDark} />  
 
-      <Navbar />
+      <motion.div
+      animate={{ opacity: isDark ? 0 : 1}}
+      transition={{ duration: 0.5 }}
+      className={isDark ? 'pointer-events-none' : ''}
+      />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-8">
@@ -89,16 +101,7 @@ export default function LandingPage() {
         </div> 
       </div>
 
-      {/* Footer */}
-      <div className="items-center flex justify-center gap-6 sm:gap-8 md:gap-10 scale-75 text-gray-400 mb-2 md:mb-3">
-        <a href="mailto:fatimatanvir80@gmail.com" className="hover:text-gray-600 transition-colors"><Mail /></a>
-        <a href="https://www.instagram.com/iamfatimatanvir/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 transition-colors"><Instagram /></a>
-        <a href="https://www.linkedin.com/in/fatimaatanvir/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 transition-colors"><Linkedin /></a>
-        <a href="https://drive.google.com/file/d/1-YSLSFpyreTIDwHI4SDFM-f2rJ38YBSc/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 transition-colors"><Paperclip /></a>
-      </div>
-      <div className="text-center text-xs md:text-12px text-gray-500 pb-4 md:gap-7" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-        © 2026 by Fatima Tanvir
-      </div>
+      <Footer />
     </div>
   );
 

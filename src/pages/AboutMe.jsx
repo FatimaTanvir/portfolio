@@ -1,13 +1,15 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function AboutMe() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
-      <div className="flex items-center justify-center h-[80vh]">
+      <div className="flex-1 flex items-center justify-center">
         <h1 className="text-4xl font-serif text-gray-400">About Me — Coming Soon</h1>
       </div>
+      <Footer />
     </div>
   )
 }
