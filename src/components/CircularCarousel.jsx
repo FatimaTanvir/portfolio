@@ -16,8 +16,8 @@ function useResponsiveValues() {
     // Smoothly scale from smallest (320px) to largest (1440px)
     return {
       radius:      Math.round(lerp(320, 1440, 150, 520, width)),
-      itemWidth:   Math.round(lerp(320, 1440, 100, 260, width)),
-      itemHeight:  Math.round(lerp(320, 1440, 100, 260, width)),
+      itemWidth:  Math.round(lerp(320, 1440, 80, 210, width)),
+      itemHeight: Math.round(lerp(320, 1440, 80, 170, width)),
       perspective: Math.round(lerp(320, 1440, 700, 1800, width)),
       tiltAngle:   lerp(320, 1440, -6, -10, width),
     };
@@ -119,7 +119,7 @@ export default function CircularCarousel({
 
   return (
     <div
-      className="w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[70vh] flex items-center justify-center overflow-visible relative select-none"
+      className="w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[62vh] flex items-center justify-center overflow-visible relative select-none"
       style={{
         perspective: `${perspective}px`,
         cursor: dragging.current ? 'grabbing' : 'grab',
@@ -158,7 +158,7 @@ export default function CircularCarousel({
       </div>
 
       {/* Instructions */}
-      <div className="absolute bottom-6 sm:bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 text-center text-xs sm:text-sm text-gray-600 bg-white/80 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full whitespace-nowrap">
+      <div className="absolute bottom-4 sm:bottom-2 md:bottom-1 left-1/2 -translate-x-1/2 text-center text-xs sm:text-sm text-gray-700 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full whitespace-nowrap">
         Drag to rotate • Auto-spinning
       </div>
     </div>
