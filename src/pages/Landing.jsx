@@ -1,18 +1,20 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { useTypewriter } from '../components/Typewriter'
-import CircleCursor from '../components/CircleCursor'
 import { Mail, Instagram, Linkedin, Paperclip } from 'lucide-react'
 import MagnetizingLines from '../components/MagnetizingLines'
 
 export default function LandingPage() {
   const displayedText = useTypewriter("Hi, I'm Fatima.", 100);
+  const navigate = useNavigate();
 
-  const CharacterCard = ({ image, alt }) => {
+  const CharacterCard = ({ image, alt, route }) => {
     return (
       <motion.div
         className="inline-block cursor-pointer"
+        onClick={() => navigate(route)}
         whileHover="hover"
         initial="initial"
         style={{ transformOrigin: 'top center' }}
@@ -42,6 +44,7 @@ export default function LandingPage() {
     );
   };
 
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Magnetizing Lines Background */}
@@ -51,7 +54,6 @@ export default function LandingPage() {
         particleCount={60}
       />
 
-      <CircleCursor />
       <Navbar />
 
       {/* Main Content */}
@@ -64,22 +66,25 @@ export default function LandingPage() {
           Wanna know more? Choose a character.
         </p>
         <p className="text-sm sm:text-base md:text-lg text-gray-500 mb-8 sm:mb-12 md:mb-16 lg:mb-20 text-center">
-          or... just click <a href="#" className="underline hover:text-black">here</a>.
+          or... just click <a href="/about" className="underline hover:text-black">here</a>.
         </p>
 
         {/* Character Cards */}
         <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-8 sm:mb-10 md:mb-12 items-center justify-center w-full">
-          <CharacterCard 
-            image="/TheDesigner.png" 
+          <CharacterCard
+            image="/TheDesigner.png"
             alt="The Designer"
+            route="/about"
           />
-          <CharacterCard 
+          <CharacterCard
             image="/TheEngineer.png"
             alt="The Engineer"
+            route="/projects"
           />
-          <CharacterCard 
+          <CharacterCard
             image="/TheArtist.png"
             alt="The Artist"
+            route="/creatives"
           />
         </div> 
       </div>
@@ -89,11 +94,13 @@ export default function LandingPage() {
         <a href="mailto:fatimatanvir80@gmail.com" className="hover:text-gray-600 transition-colors"><Mail /></a>
         <a href="https://www.instagram.com/iamfatimatanvir/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 transition-colors"><Instagram /></a>
         <a href="https://www.linkedin.com/in/fatimaatanvir/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 transition-colors"><Linkedin /></a>
-        <a href="#" className="hover:text-gray-600 transition-colors"><Paperclip /></a>
+        <a href="https://drive.google.com/file/d/1-YSLSFpyreTIDwHI4SDFM-f2rJ38YBSc/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="hover:text-gray-600 transition-colors"><Paperclip /></a>
       </div>
       <div className="text-center text-xs md:text-12px text-gray-500 pb-4 md:gap-7" style={{ fontFamily: "'Montserrat', sans-serif" }}>
         © 2026 by Fatima Tanvir
       </div>
     </div>
   );
+
+  
 }
