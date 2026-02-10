@@ -17,7 +17,7 @@ export default function Navbar({ isDark, setIsDark, showDarkToggle = false }) {
             <div className="flex text-[14px] gap-8 items-center absolute left-1/2 transform -translate-x-1/2 font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>
               <Link to="/about" className="hover:text-gray-600 transition-colors">About me</Link>
               <Link to="/projects" className="hover:text-gray-600 transition-colors">Projects</Link>
-              <Link to="/leadership" className="hover:text-gray-600 transition-colors">Designs</Link>
+              <Link to="/leadership" className="hover:text-gray-600 transition-colors">Leadership</Link>
               <Link to="/creatives" className="hover:text-gray-600 transition-colors">Creatives</Link>
             </div>
           )}

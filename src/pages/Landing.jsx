@@ -86,7 +86,7 @@ export default function LandingPage() {
           <CharacterCard
             image="/TheDesigner.png"
             alt="The Designer"
-            route="/about"
+            route="/leadership"
           />
           <CharacterCard
             image="/TheEngineer.png"
