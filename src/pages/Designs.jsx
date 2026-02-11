@@ -17,7 +17,7 @@ export default function Designs() {
         <div className="absolute inset-0 z-0">
           <MagnetizingLines
             lineColor="rgba(0, 0, 0, 0.15)"
-            opacity={0.6}
+            opacity={0.3}
             particleCount={60}
           />
         </div>
