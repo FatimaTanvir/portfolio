@@ -51,13 +51,13 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Magnetizing Lines Background */}
-      {!isDark && (
+      {/* {!isDark && (
         <MagnetizingLines
         lineColor="rgba(0, 0, 0, 0.15)"
         opacity={0.6}
         particleCount={60}
       />
-      )}
+      )} */}
       <CircleCursor isDark={isDark} />
       <Navbar isDark={isDark} setIsDark={setIsDark} showDarkToggle={true} />
       <EyeTracker isDark={isDark} />  

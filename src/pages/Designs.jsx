@@ -15,11 +15,6 @@ export default function Designs() {
       </div>
       <div className="relative">
         <div className="absolute inset-0 z-0">
-          <MagnetizingLines
-            lineColor="rgba(0, 0, 0, 0.15)"
-            opacity={0.3}
-            particleCount={60}
-          />
         </div>
         <div className="relative py-6">
       <ProjectShowcase
