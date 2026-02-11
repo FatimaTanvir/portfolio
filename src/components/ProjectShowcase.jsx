@@ -64,10 +64,29 @@ export default function ProjectShowcase({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
-      {/* Mobile: always info first, then gif */}
-      <div className="flex flex-col gap-8 md:hidden">
-        <div>{infoContent}</div>
+      {/* Mobile: title, subtitle, gif, then description/extra/link */}
+      <div className="flex flex-col gap-4 md:hidden px-4">
+        <div>
+          <h2 className="text-3xl font-serif mb-1">{title}</h2>
+          {subtitle && <p className="text-xs text-gray-400 mb-2">{subtitle}</p>}
+        </div>
         <div className="max-w-sm mx-auto">{gifsContent}</div>
+        <div>
+          {description && (
+            <p className="text-sm text-gray-700 leading-relaxed mb-3">{description}</p>
+          )}
+          {extra}
+          {link && (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors mt-2"
+            >
+              {link.label}
+            </a>
+          )}
+        </div>
       </div>
 
       {/* Desktop: side by side with gifSide control */}
