@@ -24,7 +24,7 @@ export default function CircleCursor({
 
   useEffect(() => {
     // Only show on desktop devices if hideOnMobile is enabled
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     if (isMobile && hideOnMobile) return;
 
     // Hide default cursor
@@ -79,7 +79,7 @@ export default function CircleCursor({
 
   // Hide on mobile if enabled
   if (typeof window !== "undefined") {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     if (isMobile && hideOnMobile) return null;
   }
 
