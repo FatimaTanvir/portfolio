@@ -17,7 +17,7 @@ export default function Navbar({ isDark, setIsDark, showDarkToggle = false }) {
             <div className="flex text-[14px] gap-8 items-center absolute left-1/2 transform -translate-x-1/2 font-medium" style={{ fontFamily: "'Montserrat', sans-serif" }}>
               <Link to="/about" className="hover:text-gray-600 transition-colors">About me</Link>
               <Link to="/projects" className="hover:text-gray-600 transition-colors">Projects</Link>
-              <Link to="/leadership" className="hover:text-gray-600 transition-colors">Leadership</Link>
+              <Link to="/designs" className="hover:text-gray-600 transition-colors">Designs</Link>
               <Link to="/creatives" className="hover:text-gray-600 transition-colors">Creatives</Link>
             </div>
           )}
@@ -129,10 +129,10 @@ export default function Navbar({ isDark, setIsDark, showDarkToggle = false }) {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden bg-white shadow-lg px-4 py-6 flex flex-col gap-4 items-center text-center relative z-50"
         >
-          <Link to="/about" className="hover:text-gray-600 transition-colors">About me</Link>
-          <Link to="/projects" className="hover:text-gray-600 transition-colors">Projects</Link>
-          <Link to="/leadership" className="hover:text-gray-600 transition-colors">Leadership</Link>
-          <Link to="/creatives" className="hover:text-gray-600 transition-colors">Creatives</Link>
+          <Link to="/about" className="hover:text-gray-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>About me</Link>
+          <Link to="/projects" className="hover:text-gray-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Projects</Link>
+          <Link to="/designs" className="hover:text-gray-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Designs</Link>
+          <Link to="/creatives" className="hover:text-gray-600 transition-colors" onClick={() => setMobileMenuOpen(false)}>Creatives</Link>
           <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors w-full max-w-xs" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             <a href="https://github.com/FatimaTanvir" target="_blank" rel="noopener noreferrer">GitHub</a>
           </button>
