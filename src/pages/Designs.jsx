@@ -9,7 +9,7 @@ export default function Designs() {
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
       <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 pt-4 sm:pt-6">
-        <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-serif mb-2 sm:mb-3 text-center pb-4 px-2">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-1 sm:mb-2 text-center px-2">
             A collection of design work. <br /> <span className="text-blue-800">Prototypes</span>, mockups, <span className="text-green-700">and more</span>.
           </h1>
       </div>
@@ -43,6 +43,9 @@ export default function Designs() {
             </p>
           </>
         }
+        tools={[
+    { name: 'Made in Figma', icon: 'https://cdn.simpleicons.org/figma' },
+  ]}
       />
     
       {/* <ProjectShowcase

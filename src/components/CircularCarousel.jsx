@@ -54,6 +54,7 @@ export default function CircularCarousel({
   const items = images.length > 0 ? images : defaultImages;
 
   const [rotation, setRotation] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const dragging = useRef(false);
   const lastX = useRef(0);
   const velocity = useRef(0);
@@ -106,14 +107,14 @@ export default function CircularCarousel({
   // Auto-rotation when not dragging
   useEffect(() => {
     function autoRotate() {
-      if (!dragging.current) {
+      if (!dragging.current && hoveredIndex === null) {
         setRotation((r) => r + autoRotateSpeed);
       }
       rafRef.current = requestAnimationFrame(autoRotate);
     }
     rafRef.current = requestAnimationFrame(autoRotate);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [autoRotateSpeed]);
+  }, [autoRotateSpeed, hoveredIndex]);
 
   const angleStep = 360 / items.length;
 
@@ -146,6 +147,8 @@ export default function CircularCarousel({
               transform: `rotateY(${angleStep * i}deg) translateZ(${radius}px) rotateX(${tiltAngle}deg)`,
               transformStyle: 'preserve-3d',
             }}
+            onPointerEnter={() => setHoveredIndex(i)}
+            onPointerLeave={() => setHoveredIndex(null)}
           >
             <img
               src={img.src}
@@ -153,6 +156,11 @@ export default function CircularCarousel({
               draggable={false}
               className="w-full h-full object-cover pointer-events-none"
             />
+            {hoveredIndex === i && (
+              <div className="absolute inset-x-0 bottom-0 bg-black/50 backdrop-blur-sm px-2 py-1.5 text-white text-xs text-center font-medium transition-opacity">
+                {img.alt || `Item ${i + 1}`}
+              </div>
+            )}
           </div>
         ))}
       </div>
