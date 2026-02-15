@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CircleCursor({
   dotSize = 6,
@@ -51,19 +51,20 @@ export default function CircleCursor({
     document.addEventListener("mousedown", onMouseDown);
     document.addEventListener("mouseup", onMouseUp);
 
-    // Check for link hover
-    const updateLinkHover = () => {
-      document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-        el.addEventListener("mouseenter", () => setLinkHovered(true));
-        el.addEventListener("mouseleave", () => setLinkHovered(false));
-      });
+    // Use event delegation for link hover detection (avoids memory leak)
+    const onMouseOver = (e) => {
+      if (e.target.closest('a, button, [role="button"]')) {
+        setLinkHovered(true);
+      }
+    };
+    const onMouseOut = (e) => {
+      if (e.target.closest('a, button, [role="button"]')) {
+        setLinkHovered(false);
+      }
     };
 
-    updateLinkHover();
-
-    // Re-run when DOM changes
-    const observer = new MutationObserver(updateLinkHover);
-    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener("mouseover", onMouseOver);
+    document.addEventListener("mouseout", onMouseOut);
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
@@ -71,11 +72,12 @@ export default function CircleCursor({
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mousedown", onMouseDown);
       document.removeEventListener("mouseup", onMouseUp);
-      observer.disconnect();
+      document.removeEventListener("mouseover", onMouseOver);
+      document.removeEventListener("mouseout", onMouseOut);
       document.body.style.cursor = "auto";
       styleElement.remove();
     };
-  }, [hideOnMobile, isDark]);
+  }, [hideOnMobile]);
 
   // Hide on mobile if enabled
   if (typeof window !== "undefined") {

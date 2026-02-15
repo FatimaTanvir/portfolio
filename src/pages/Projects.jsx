@@ -1,10 +1,11 @@
-import React from 'react'
+import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ProjectCard from '../components/ProjectCard'
 import { projects } from '../data/projects'
 
 export default function Projects() {
+  useEffect(() => { document.title = "Projects | Fatima Tanvir" }, [])
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />

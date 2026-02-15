@@ -1,10 +1,10 @@
-import React from 'react'
+import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ProjectShowcase from '../components/ProjectShowcase'
-import MagnetizingLines from '../components/MagnetizingLines'
 
 export default function Designs() {
+  useEffect(() => { document.title = "Designs | Fatima Tanvir" }, [])
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
@@ -13,10 +13,7 @@ export default function Designs() {
             A collection of design work. <br /> <span className="text-blue-800">Prototypes</span>, mockups, <span className="text-green-700">and more</span>.
           </h1>
       </div>
-      <div className="relative">
-        <div className="absolute inset-0 z-0">
-        </div>
-        <div className="relative py-6">
+      <div className="flex-1 flex items-center py-6">
       <ProjectShowcase
         title="Cookaroo"
         subtitle="Amazon x CodePath Design Challenge - Summer 2025"
@@ -64,7 +61,6 @@ export default function Designs() {
       /> */}
 
       {/* <div className="pb-20"></div> */}
-        </div>
       </div>
       <Footer />
     </div>

@@ -10,8 +10,8 @@ export default function Page404() {
         <div className="flex-1 flex flex-col items-center justify-center"> 
             <img 
                 src="/Error.svg" 
-                alt="Project not found" 
-                className="mx-auto mb-4 w-80 h-55 object-contain" 
+                alt="Page not found" 
+                className="mx-auto mb-4 w-80 h-52 object-contain" 
             /> 
         <div className="text-center"> 
         <Link to="/" className="flex text-center items-center gap-1.5 text-blue-800 hover:underline py-6">

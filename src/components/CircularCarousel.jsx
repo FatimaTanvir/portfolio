@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 // Smoothly interpolate a value between min and max based on window width
 function lerp(minWidth, maxWidth, minVal, maxVal, width) {
@@ -8,23 +7,22 @@ function lerp(minWidth, maxWidth, minVal, maxVal, width) {
   return minVal + t * (maxVal - minVal);
 }
 
+function getResponsiveValues(width) {
+  return {
+    radius:      Math.round(lerp(320, 1440, 150, 520, width)),
+    itemWidth:  Math.round(lerp(320, 1440, 80, 210, width)),
+    itemHeight: Math.round(lerp(320, 1440, 80, 170, width)),
+    perspective: Math.round(lerp(320, 1440, 700, 1800, width)),
+    tiltAngle:   lerp(320, 1440, -6, -10, width),
+  };
+}
+
 // Hook that smoothly scales carousel values based on window width
 function useResponsiveValues() {
-  const [values, setValues] = useState(() => getValues(window.innerWidth));
-
-  function getValues(width) {
-    // Smoothly scale from smallest (320px) to largest (1440px)
-    return {
-      radius:      Math.round(lerp(320, 1440, 150, 520, width)),
-      itemWidth:  Math.round(lerp(320, 1440, 80, 210, width)),
-      itemHeight: Math.round(lerp(320, 1440, 80, 170, width)),
-      perspective: Math.round(lerp(320, 1440, 700, 1800, width)),
-      tiltAngle:   lerp(320, 1440, -6, -10, width),
-    };
-  }
+  const [values, setValues] = useState(() => getResponsiveValues(window.innerWidth));
 
   useEffect(() => {
-    const handleResize = () => setValues(getValues(window.innerWidth));
+    const handleResize = () => setValues(getResponsiveValues(window.innerWidth));
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -48,55 +46,68 @@ export default function CircularCarousel({
     { src: 'https://i.pinimg.com/736x/1a/bb/5b/1abb5b63d5e596dfa2c4c5c0be19c31d.jpg', alt: 'Spidey Beanie' },
     { src: 'https://i.pinimg.com/736x/38/b5/dd/38b5dd4ebe51592a4cf5783638fb5323.jpg', alt: 'We Bear Bears' },
     { src: 'https://i.pinimg.com/736x/ef/ec/23/efec23ef2a6d772130ffd4f6ba6e9fe1.jpg', alt: 'Mr. & Mrs. Teddy'},
-    
+
   ];
 
   const items = images.length > 0 ? images : defaultImages;
 
-  const [rotation, setRotation] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
   const dragging = useRef(false);
   const lastX = useRef(0);
   const velocity = useRef(0);
+  const rotationRef = useRef(0);
+  const innerRef = useRef(null);
   const rafRef = useRef(null);
+  const hoveredRef = useRef(null);
+  const autoRotateSpeedRef = useRef(autoRotateSpeed);
 
-  // Mouse/Touch drag system
+  // Keep refs in sync with state/props
   useEffect(() => {
-    const handlePointerDown = (e) => {
-      dragging.current = true;
-      lastX.current = e.clientX;
-      e.target.setPointerCapture?.(e.pointerId);
-    };
+    hoveredRef.current = hoveredIndex;
+  }, [hoveredIndex]);
+  useEffect(() => {
+    autoRotateSpeedRef.current = autoRotateSpeed;
+  }, [autoRotateSpeed]);
 
-    const handlePointerMove = (e) => {
-      if (!dragging.current) return;
-      const dx = e.clientX - lastX.current;
-      lastX.current = e.clientX;
-      velocity.current = dx * 0.5;
-      setRotation((r) => r + dx * 0.5);
-    };
-
-    const handlePointerUp = () => {
-      dragging.current = false;
-    };
-
-    window.addEventListener('pointerdown', handlePointerDown);
-    window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('pointerup', handlePointerUp);
-
-    return () => {
-      window.removeEventListener('pointerdown', handlePointerDown);
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('pointerup', handlePointerUp);
-    };
+  // Scoped pointer events: only start drag on the carousel container
+  const handlePointerDown = useCallback((e) => {
+    dragging.current = true;
+    setIsDragging(true);
+    lastX.current = e.clientX;
+    e.currentTarget.setPointerCapture(e.pointerId);
   }, []);
 
-  // Inertia/momentum when released
+  const handlePointerMove = useCallback((e) => {
+    if (!dragging.current) return;
+    const dx = e.clientX - lastX.current;
+    lastX.current = e.clientX;
+    velocity.current = dx * 0.5;
+    rotationRef.current += dx * 0.5;
+  }, []);
+
+  const handlePointerUp = useCallback(() => {
+    dragging.current = false;
+    setIsDragging(false);
+  }, []);
+
+  // Single RAF loop: handles inertia + auto-rotation via direct DOM manipulation
   useEffect(() => {
     function animate() {
-      if (!dragging.current && Math.abs(velocity.current) > 0.01) {
-        setRotation((r) => r + velocity.current);
-        velocity.current *= 0.94; // Friction
+      if (!dragging.current) {
+        // Apply inertia
+        if (Math.abs(velocity.current) > 0.01) {
+          rotationRef.current += velocity.current;
+          velocity.current *= 0.94;
+        }
+        // Auto-rotate when not hovered
+        if (hoveredRef.current === null) {
+          rotationRef.current += autoRotateSpeedRef.current;
+        }
+      }
+      // Direct DOM update - no React re-render needed
+      if (innerRef.current) {
+        innerRef.current.style.transform = `rotateY(${rotationRef.current}deg)`;
       }
       rafRef.current = requestAnimationFrame(animate);
     }
@@ -104,40 +115,33 @@ export default function CircularCarousel({
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  // Auto-rotation when not dragging
-  useEffect(() => {
-    function autoRotate() {
-      if (!dragging.current && hoveredIndex === null) {
-        setRotation((r) => r + autoRotateSpeed);
-      }
-      rafRef.current = requestAnimationFrame(autoRotate);
-    }
-    rafRef.current = requestAnimationFrame(autoRotate);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [autoRotateSpeed, hoveredIndex]);
-
   const angleStep = 360 / items.length;
 
   return (
     <div
       className="w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[62vh] flex items-center justify-center overflow-visible relative select-none"
+      role="region"
+      aria-label="Creative works carousel"
       style={{
         perspective: `${perspective}px`,
-        cursor: dragging.current ? 'grabbing' : 'grab',
+        cursor: isDragging ? 'grabbing' : 'grab',
         touchAction: 'none',
       }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
     >
       <div
+        ref={innerRef}
         className="w-full h-full absolute"
         style={{
           transformStyle: 'preserve-3d',
-          transform: `rotateY(${rotation}deg)`,
           willChange: 'transform',
         }}
       >
         {items.map((img, i) => (
           <div
-            key={i}
+            key={img.alt || i}
             className="absolute left-1/2 top-1/2 rounded-2xl overflow-hidden shadow-2xl bg-white"
             style={{
               width: `${itemWidth}px`,
@@ -154,6 +158,7 @@ export default function CircularCarousel({
               src={img.src}
               alt={img.alt || `Item ${i + 1}`}
               draggable={false}
+              loading="lazy"
               className="w-full h-full object-cover pointer-events-none"
             />
             {hoveredIndex === i && (

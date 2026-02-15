@@ -1,6 +1,4 @@
-import React, { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import CircleCursor from './components/CircleCursor'
 import Landing from './pages/Landing'
 import AboutMe from './pages/AboutMe'
 import Projects from './pages/Projects'
@@ -8,6 +6,7 @@ import ProjectDetail from './pages/ProjectDetail'
 import Designs from './pages/Designs'
 import Creatives from './pages/Creatives'
 import Page404 from './pages/Error'
+import CircleCursor from './components/CircleCursor'
 
 function App() {
   return (

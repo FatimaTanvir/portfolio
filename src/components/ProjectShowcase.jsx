@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
 
 /**
@@ -26,24 +27,15 @@ export default function ProjectShowcase({
   link,
   extra,
   tools = [],
+  inProgress = false,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [containerSize, setContainerSize] = useState(null)
-  const firstImgRef = useRef(null)
   const hasMultiple = gifs.length > 1
 
-  // Lock the gallery dimensions to the first image's natural aspect ratio (good?)
+  // Reset gallery index when gifs array changes (e.g. navigating between projects)
   useEffect(() => {
     setCurrentIndex(0)
-    setContainerSize(null)
   }, [gifs])
-
-  const handleFirstLoad = (e) => {
-    if (!containerSize) {
-      const { naturalWidth, naturalHeight } = e.currentTarget
-      setContainerSize({ aspectRatio: `${naturalWidth} / ${naturalHeight}` })
-    }
-  }
 
   const goTo = (i) => setCurrentIndex(i)
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + gifs.length) % gifs.length)
@@ -51,20 +43,17 @@ export default function ProjectShowcase({
 
   const gifsContent = (
     <div className="relative">
-      {/* Image display — locked to first image's aspect ratio */}
+      {/* Image display — stable 16:9 container so size never changes between images/projects */}
       <div
         className="rounded-2xl overflow-hidden relative bg-gray-50"
-        style={containerSize ? { aspectRatio: containerSize.aspectRatio } : undefined}
+        style={{ aspectRatio: '16 / 9' }}
       >
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIndex}
-            ref={currentIndex === 0 ? firstImgRef : undefined}
             src={gifs[currentIndex]}
             alt={`${title} demo ${currentIndex + 1}`}
-            className="w-full h-full object-contain"
-            style={containerSize ? { position: 'absolute', inset: 0 } : undefined}
-            onLoad={currentIndex === 0 ? handleFirstLoad : undefined}
+            className="w-full h-full object-contain absolute inset-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -77,12 +66,14 @@ export default function ProjectShowcase({
           <>
             <button
               onClick={goPrev}
+              aria-label="Previous image"
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-1.5 shadow-md transition-colors z-10"
             >
               <ChevronLeft size={18} className="text-gray-600" />
             </button>
             <button
               onClick={goNext}
+              aria-label="Next image"
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full p-1.5 shadow-md transition-colors z-10"
             >
               <ChevronRight size={18} className="text-gray-600" />
@@ -98,6 +89,7 @@ export default function ProjectShowcase({
             <button
               key={i}
               onClick={() => goTo(i)}
+              aria-label={`Go to image ${i + 1}`}
               className={`rounded-full transition-all duration-200 ${
                 i === currentIndex
                   ? 'w-5 h-2 bg-gray-800'
@@ -122,9 +114,18 @@ export default function ProjectShowcase({
     </div>
   )
 
+  const progressBadge = inProgress && (
+    <span className="text-[10px] font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
+      In Progress
+    </span>
+  )
+
   const infoContent = (
     <div>
-      <h2 className="text-3xl sm:text-4xl font-serif mb-1">{title}</h2>
+      <div className="flex items-center gap-2 mb-1">
+        <h2 className="text-3xl sm:text-4xl font-serif">{title}</h2>
+        {progressBadge}
+      </div>
       {subtitle && <p className="text-xs text-gray-400 mb-3">{subtitle}</p>}
       {description && (
         <p className="text-sm text-gray-700 leading-relaxed mb-3">{description}</p>
@@ -152,15 +153,18 @@ export default function ProjectShowcase({
   }[gifSize] || 'max-w-sm'
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 w-full">
       
       {/* Mobile: title, subtitle, gif, then description/extra/link */}
       <div className="flex flex-col gap-4 md:hidden px-4">
         <div>
-          <h2 className="text-3xl font-serif mb-1">{title}</h2>
+          <div className="flex items-center gap-2 mb-1">
+            <h2 className="text-3xl font-serif">{title}</h2>
+            {progressBadge}
+          </div>
           {subtitle && <p className="text-xs text-gray-400 mb-2">{subtitle}</p>}
         </div>
-        <div className="max-w-sm mx-auto w-full">
+        <div className={`${sizeClass} mx-auto w-full`}>
           {gifsContent}
           {toolsContent}
         </div>
@@ -183,16 +187,16 @@ export default function ProjectShowcase({
       </div>
 
       {/* Desktop: side by side with gifSide control */}
-      <div className={`hidden md:grid ${gifSide === 'left' ? 'md:grid-cols-[3fr_2fr]' : 'md:grid-cols-[2fr_3fr]'} gap-16 lg:gap-24 xl:gap-32 items-center`}>
+      <div className={`hidden md:grid ${gifSide === 'left' ? 'md:grid-cols-[3fr_2fr]' : 'md:grid-cols-[2fr_3fr]'} gap-10 lg:gap-16 xl:gap-20 items-center`}>
         {gifSide === 'left' ? (
           <>
-            <div className={`${sizeClass} mx-auto`}>{gifsContent}{toolsContent}</div>
+            <div className="w-full">{gifsContent}{toolsContent}</div>
             <div className="flex items-center justify-center"><div className="max-w-lg">{infoContent}</div></div>
           </>
         ) : (
           <>
             <div className="flex items-center justify-center"><div className="max-w-lg">{infoContent}</div></div>
-            <div className={`${sizeClass} mx-auto pb-6`}>{gifsContent}{toolsContent}</div>
+            <div className="w-full pb-6">{gifsContent}{toolsContent}</div>
           </>
         )}
       </div>

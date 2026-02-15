@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
 import { Github, ArrowRight } from 'lucide-react'
 
-export default function ProjectCard({ slug, title, subtitle, thumbnail, thumbnailType = 'image', tools = [], repo, link, index = 0 }) {
+export default function ProjectCard({ slug, title, subtitle, thumbnail, thumbnailType = 'image', tools = [], repo, link, index = 0, inProgress = false }) {
   const repoUrl = repo || (link && link.repo);
   const cardRef = useRef(null);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
@@ -51,12 +52,14 @@ export default function ProjectCard({ slug, title, subtitle, thumbnail, thumbnai
             <img
               src={thumbnail}
               alt={title}
+              loading="lazy"
               className="w-16 h-16 object-contain opacity-60"
             />
           ) : (
             <img
               src={thumbnail}
               alt={title}
+              loading="lazy"
               className="w-full h-full object-cover"
             />
           )}
@@ -64,7 +67,14 @@ export default function ProjectCard({ slug, title, subtitle, thumbnail, thumbnai
 
         {/* Content */}
         <div className="p-4 sm:p-5">
-          <h3 className="text-lg sm:text-xl font-serif mb-1">{title}</h3>
+          <div className="flex items-center gap-2 mb-1">
+            <h3 className="text-lg sm:text-xl font-serif">{title}</h3>
+            {inProgress && (
+              <span className="text-[10px] font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
+                In Progress
+              </span>
+            )}
+          </div>
           <p className="text-xs sm:text-sm text-gray-400 line-clamp-1 mb-3">{subtitle}</p>
 
           {/* Tool icons */}

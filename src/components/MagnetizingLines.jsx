@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function MagnetizingLines({ 
   lineColor = 'rgba(0, 0, 0, 0.1)',

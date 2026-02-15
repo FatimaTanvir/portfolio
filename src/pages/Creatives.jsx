@@ -1,11 +1,12 @@
-import React from 'react'
+import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import CircularCarousel from '../components/CircularCarousel'
 import Footer from '../components/Footer'
 
 export default function Creatives() {
+  useEffect(() => { document.title = "Creatives | Fatima Tanvir" }, [])
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col overflow-x-hidden">
       <Navbar />
       <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-1 sm:mb-2 text-center px-2 pt-4 pb-2">
@@ -40,6 +41,7 @@ export default function Creatives() {
                 <img
                   src={img.src}
                   alt={img.alt}
+                  loading="lazy"
                   className="w-full h-auto object-cover"
                 />
               </div>
