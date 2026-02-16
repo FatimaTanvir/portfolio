@@ -114,7 +114,7 @@ export const projects = [
       { name: 'Roboflow', icon: 'https://cdn.simpleicons.org/roboflow' },
     ],
     repo: 'https://github.com/FatimaTanvir/UR5_SurgicalTools',
-    link: { href: 'https://drive.google.com/file/d/19U3-V3p52L4z8gwSn2yx6nzahxH1Xy3g/view?usp=sharing', label: 'Check out my work ->' },
+    link: { href: 'https://github.com/FatimaTanvir/UR5_SurgicalTools', label: 'Check out my work ->' },
     color: 'olive',
   },
 
@@ -135,7 +135,7 @@ export const projects = [
       { name: 'Vite', icon: 'https://cdn.simpleicons.org/vite' },
     ],
     repo: 'https://github.com/FatimaTanvir/widdlemethis',
-    link: { href: 'https://drive.google.com/file/d/19U3-V3p52L4z8gwSn2yx6nzahxH1Xy3g/view?usp=sharing', label: 'Play?' },
+    link: { href: 'https://github.com/FatimaTanvir/widdlemethis', label: 'Play?' },
     color: 'sand',
   },
 
