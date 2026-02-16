@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { projects } from '../data/projects'
 import { projectExtras } from '../data/projectExtras'
 import Navbar from '../components/Navbar'
@@ -33,8 +33,8 @@ export default function ProjectDetail() {
     )
   }
 
-  const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : null
-  const nextProject = projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null
+  // const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : null
+  // const nextProject = projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -59,11 +59,11 @@ export default function ProjectDetail() {
         tools={project.tools}
         link={project.link}
         extra={projectExtras[project.slug]}
-        inProgress={project.inProgress}
+        badge={project.badge}
       />
       </div>
 
-      {/* Next / Prev navigation */}
+      {/* Next / Prev navigation
       {(prevProject || nextProject) && (
         <div className="max-w-7xl mx-auto w-full px-6 sm:px-10 py-10">
           <div className="border-t border-gray-200 pt-8 flex items-center justify-between">
@@ -98,7 +98,7 @@ export default function ProjectDetail() {
             )}
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="flex-1" />
       <Footer />

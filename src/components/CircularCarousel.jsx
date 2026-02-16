@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-
 // Smoothly interpolate a value between min and max based on window width
 function lerp(minWidth, maxWidth, minVal, maxVal, width) {
   const clamped = Math.min(Math.max(width, minWidth), maxWidth);

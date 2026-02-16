@@ -3,7 +3,7 @@ export const projects = [
     slug: 'webuild',
     title: 'WeBuild',
     subtitle: 'Senior Capstone Project',
-    inProgress: true,
+    badge: 'In Progress',
     description: 'A full-stack collaboration platform built as a senior capstone project. WeBuild connects teams with a secure backend powered by Express and PostgreSQL, JWT-based authentication, and a React frontend — designed to streamline how groups plan and build projects together.',
     thumbnail: '/projects/webuild/WeBuild Figma.png',
     thumbnailType: 'image',
@@ -14,16 +14,16 @@ export const projects = [
       { name: 'React', icon: 'https://cdn.simpleicons.org/react' },
       { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript' },
       { name: 'Nodejs', icon: 'https://cdn.simpleicons.org/node.js' },
+      { name: 'Express', icon: 'https://cdn.simpleicons.org/express' },
       { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql' },
       { name: 'JWT', icon: 'https://cdn.simpleicons.org/jwt' },
       { name: 'Vite', icon: 'https://cdn.simpleicons.org/vite' },
     ],
     repo: 'https://github.com/FatimaTanvir/WeBuild',
     link: { href: 'https://github.com/FatimaTanvir/WeBuild', label: 'GitHub Repo' },
-    // add another button?
-    color: 'blue',
+    color: 'moss',
   },
-  
+
   {
     slug: 'medlens',
     title: 'MedLens',
@@ -35,7 +35,7 @@ export const projects = [
     gifSize: '2xl',
     tools: [
       { name: 'Python', icon: 'https://cdn.simpleicons.org/python' },
-      { name: 'Gemini', icon: '/public/gemini.webp' },
+      { name: 'Gemini', icon: '/gemini.webp' },
       { name: 'Fastapi', icon: 'https://cdn.simpleicons.org/fastapi' },
       { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase' },
       { name: 'Elevenlabs', icon: 'https://cdn.simpleicons.org/elevenlabs' },
@@ -46,15 +46,14 @@ export const projects = [
     ],
     repo: 'https://github.com/FatimaTanvir/codered',
     link: { href: 'https://devpost.com/software/medlens-82eq9n', label: 'Checkout Devpost ->' },
-    // add another button?
-    color: 'blue',
+    color: 'maroon',
   },
-  
+
   {
     slug: 'stride',
     title: 'Stride',
     subtitle: 'CodePath Web Dev Final Project',
-    inProgress: true,
+    badge: 'Refining',
     description: 'A social platform for runners to share experiences, connect with fellow athletes, and discover new routes. Features include post creation with image uploads, an upvote system, commenting, search and category filtering, and a masonry grid layout — all backed by Supabase with real-time updates.',
     thumbnail: '/projects/stride/1.png',
     thumbnailType: 'image',
@@ -67,12 +66,11 @@ export const projects = [
       { name: 'Css', icon: 'https://cdn.simpleicons.org/css' },
       { name: 'Vite', icon: 'https://cdn.simpleicons.org/vite' },
       { name: 'Supabase', icon: 'https://cdn.simpleicons.org/supabase' },
-      { name: 'Postgress', icon: 'https://cdn.simpleicons.org/postgresql' },
+      { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql' },
     ],
     repo: 'https://github.com/FatimaTanvir/Stride/tree/main/Stride',
     link: { href: 'https://github.com/FatimaTanvir/Stride/tree/main/Stride', label: 'GitHub Repo' },
-    // add another button?
-    color: 'blue',
+    color: 'terracotta',
   },
 
   {
@@ -93,10 +91,33 @@ export const projects = [
     ],
     repo: 'https://github.com/FatimaTanvir/journal_pages',
     link: { href: 'https://github.com/FatimaTanvir/Journal_Pages', label: 'GitHub Repo' },
-    // add another button?
-    color: 'blue',
+    color: 'sage',
   },
-  
+
+  {
+    slug: 'ur5-reseach',
+    title: 'Precision Tool Handling with UR5',
+    subtitle: 'DOED Research - Summer 2024',
+    description: 'Trained a UR5 robotic arm to detect and classify 11 surgical instruments using YOLOv5 object detection in a ROS + Gazebo simulation environment, achieving 95.8% mAP accuracy.',
+    thumbnail: '/projects/ur5/UR5 on table.png',
+    thumbnailType: 'image',
+    gifs: ['/projects/ur5/demo.gif','/projects/ur5/tools.gif','/projects/ur5/val_batch0_labels.jpg', '/projects/ur5/val_batch0_pred.jpg'],
+    gifSide: 'right',
+    gifSize: '2xl',
+    tools: [
+      { name: 'Python', icon: 'https://cdn.simpleicons.org/python' },
+      { name: 'ROS Noetic', icon: 'https://cdn.simpleicons.org/ros' },
+      { name: 'Gazebo', icon: '/Gazebo.png' },
+      { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu' },
+      { name: 'YOLOv5', icon: '/yolov5.png' },
+      { name: 'Tensorflow', icon: 'https://cdn.simpleicons.org/tensorflow' },
+      { name: 'Roboflow', icon: 'https://cdn.simpleicons.org/roboflow' },
+    ],
+    repo: 'https://github.com/FatimaTanvir/UR5_SurgicalTools',
+    link: { href: 'https://drive.google.com/file/d/19U3-V3p52L4z8gwSn2yx6nzahxH1Xy3g/view?usp=sharing', label: 'Check out my work ->' },
+    color: 'olive',
+  },
+
   {
     slug: 'widdlemethis',
     title: 'WiddleMeThis',
@@ -115,35 +136,9 @@ export const projects = [
     ],
     repo: 'https://github.com/FatimaTanvir/widdlemethis',
     link: { href: 'https://drive.google.com/file/d/19U3-V3p52L4z8gwSn2yx6nzahxH1Xy3g/view?usp=sharing', label: 'Play?' },
-    // add another button?
-    color: 'blue',
+    color: 'sand',
   },
-  
-  {
-    slug: 'ur5-reseach',
-    title: 'Precision Tool Handling with UR5',
-    subtitle: 'DOED Research - Summer 2024',
-    description: 'Trained a UR5 robotic arm to detect and classify 11 surgical instruments using YOLOv5 object detection in a ROS + Gazebo simulation environment, achieving 95.8% mAP accuracy.',
-    thumbnail: '/projects/ur5/UR5 on table.png',
-    thumbnailType: 'image',
-    gifs: ['/projects/ur5/demo.gif','/projects/ur5/tools.gif','/projects/ur5/val_batch0_labels.jpg', '/projects/ur5/val_batch0_pred.jpg'],
-    gifSide: 'right',
-    gifSize: '2xl',
-    tools: [
-      { name: 'Python', icon: 'https://cdn.simpleicons.org/python' },
-      { name: 'ROS Noetic', icon: 'https://cdn.simpleicons.org/ros' },
-      { name: 'Gazebo', icon: '/public/gazebo.png' },
-      { name: 'Ubuntu', icon: 'https://cdn.simpleicons.org/ubuntu' },
-      { name: '', icon: '/public/yolov5.png' },
-      { name: 'Tensorflow', icon: 'https://cdn.simpleicons.org/tensorflow' },
-      { name: 'Roboflow', icon: 'https://cdn.simpleicons.org/roboflow' },
-    ],
-    repo: 'https://github.com/FatimaTanvir/UR5_SurgicalTools',
-    link: { href: 'https://drive.google.com/file/d/19U3-V3p52L4z8gwSn2yx6nzahxH1Xy3g/view?usp=sharing', label: 'Check out my work ->' },
-    // add another button?
-    color: 'blue',
-  },
-  
+
   {
     slug: 'qr-code-generator',
     title: 'QR Code Generator',
@@ -161,7 +156,7 @@ export const projects = [
     ],
     repo: 'https://github.com/FatimaTanvir/QR-Code-Generator',
     link: { href: 'https://github.com/FatimaTanvir/QR-Code-Generator', label: 'Try it out!' },
-    color: 'blue',
+    color: 'clay',
   },
 
   

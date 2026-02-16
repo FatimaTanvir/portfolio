@@ -27,15 +27,14 @@ export default function ProjectShowcase({
   link,
   extra,
   tools = [],
-  inProgress = false,
+  badge,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const hasMultiple = gifs.length > 1
 
   // Reset gallery index when gifs array changes (e.g. navigating between projects)
-  useEffect(() => {
-    setCurrentIndex(0)
-  }, [gifs])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { setCurrentIndex(0) }, [gifs])
 
   const goTo = (i) => setCurrentIndex(i)
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + gifs.length) % gifs.length)
@@ -107,16 +106,16 @@ export default function ProjectShowcase({
     <div className="flex flex-wrap gap-3 mt-6 pt-4 pb-2 items-center justify-center">
       {tools.map((tool, i) => (
         <div key={i} className="flex items-center gap-1.5 text-gray-600" title={tool.name}>
-          <img src={tool.icon} alt={tool.name} className="w-5 h-5 grayscale opacity-60" />
+          <img src={tool.icon} alt={tool.name} className="w-5 h-5" />
           <span className="text-[10px] text-gray-400">{tool.name}</span>
         </div>
       ))}
     </div>
   )
 
-  const progressBadge = inProgress && (
+  const badgePill = badge && (
     <span className="text-[10px] font-medium text-amber-600 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5 whitespace-nowrap">
-      In Progress
+      {badge}
     </span>
   )
 
@@ -124,7 +123,7 @@ export default function ProjectShowcase({
     <div>
       <div className="flex items-center gap-2 mb-1">
         <h2 className="text-3xl sm:text-4xl font-serif">{title}</h2>
-        {progressBadge}
+        {badgePill}
       </div>
       {subtitle && <p className="text-xs text-gray-400 mb-3">{subtitle}</p>}
       {description && (
@@ -160,7 +159,7 @@ export default function ProjectShowcase({
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h2 className="text-3xl font-serif">{title}</h2>
-            {progressBadge}
+            {badgePill}
           </div>
           {subtitle && <p className="text-xs text-gray-400 mb-2">{subtitle}</p>}
         </div>
