@@ -119,6 +119,24 @@ export const projects = [
   },
 
   {
+    slug: 'f1',
+    title: 'A data driven glance at Formula 1',
+    subtitle: 'Data Science Capstone Project',
+    description: 'This R-powered project takes a thrilling journey through the history of Formula 1, analyzing a rich dataset spanning from the sport\'s inception in 1950 up to the 2024 season. By employing statistical scrutiny and dynamic visualizations, my team and I dissect the performance evolution of current F1 teams. Our analysis spotlights trends in qualifying prowess, race victories, fastest lap speeds, and overall consistency, offering a data-driven perspective on the ever-evolving landscape of Formula 1 racing. We also put the iconic team, Ferrari, under the microscope for a more granular examination of their historical performance.',
+    thumbnail: '/projects/f1/1.png',
+    thumbnailType: 'image',
+    gifs: ['/projects/f1/1.png', '/projects/f1/2.png', '/projects/f1/3.png', '/projects/f1/4.png', '/projects/f1/5.png', '/projects/f1/6.png'],
+    gifSide: 'left',
+    gifSize: '2xl',
+    tools: [
+      { name: 'Entirely completed in R', icon: 'https://cdn.simpleicons.org/r' },
+    ],
+    repo: 'https://github.com/FatimaTanvir/F1_data_analysis',
+    link: { href: 'https://docs.google.com/presentation/d/1tI60Dn2zNfbUSH7yMRwXMK4eYjEBcOF26XUC9FAtriI/edit?usp=sharing', label: 'Presentation' },
+    color: 'terracotta',
+  },
+
+  {
     slug: 'widdlemethis',
     title: 'WiddleMeThis',
     subtitle: 'Can you guess the hidden message?',
