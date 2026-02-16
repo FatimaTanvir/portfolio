@@ -129,10 +129,10 @@ export const projects = [
     gifSide: 'left',
     gifSize: '2xl',
     tools: [
-      { name: 'Entirely completed in R', icon: 'https://cdn.simpleicons.org/r' },
+      { name: 'Completed in R', icon: 'https://cdn.simpleicons.org/r' },
     ],
     repo: 'https://github.com/FatimaTanvir/F1_data_analysis',
-    link: { href: 'https://docs.google.com/presentation/d/1tI60Dn2zNfbUSH7yMRwXMK4eYjEBcOF26XUC9FAtriI/edit?usp=sharing', label: 'Presentation' },
+    link: { href: 'https://docs.google.com/presentation/d/1tI60Dn2zNfbUSH7yMRwXMK4eYjEBcOF26XUC9FAtriI/edit?usp=sharing', label: 'View Presentation' },
     color: 'terracotta',
   },
 
