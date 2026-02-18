@@ -12,7 +12,7 @@ export default function Projects() {
     <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
       <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 pt-4 sm:pt-6">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-1 sm:mb-2 text-center px-2 pb-8 sm:pb-10">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display mb-1 sm:mb-2 text-center px-2 pb-8 sm:pb-10">
           Noteworthy <span className="text-[#bd6a16]">Projects</span>
         </h1>
 
@@ -33,7 +33,7 @@ export default function Projects() {
             className="rounded-xl border-2 border-dashed border-[#887c6a] flex flex-col items-center justify-center min-h-[280px] text-center p-8"
           >
             <span className="text-3xl mb-3">💻</span>
-            <p className="text-sm font-serif text-[#000000]">More coming soon...</p>
+            <p className="text-sm font-display text-[#000000]">More coming soon...</p>
             <p className="text-[11px] text-[#38250b] mt-1">Always building something new</p>
           </motion.div>
         </div>

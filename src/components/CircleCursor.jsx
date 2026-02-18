@@ -92,6 +92,7 @@ export default function CircleCursor({
     <>
       {/* Dot */}
       <div
+        className="circle-cursor-dot"
         style={{
           position: "fixed",
           left: 0,
@@ -110,6 +111,7 @@ export default function CircleCursor({
       />
       {/* Ring */}
       <div
+        className="circle-cursor-ring"
         style={{
           position: "fixed",
           left: 0,

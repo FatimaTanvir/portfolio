@@ -122,7 +122,7 @@ export default function ProjectShowcase({
   const infoContent = (
     <div>
       <div className="flex items-center gap-2 mb-1">
-        <h2 className="text-3xl sm:text-4xl font-serif">{title}</h2>
+        <h2 className="text-3xl sm:text-4xl font-display">{title}</h2>
         {badgePill}
       </div>
       {subtitle && <p className="text-xs text-gray-400 mb-3">{subtitle}</p>}
@@ -158,7 +158,7 @@ export default function ProjectShowcase({
       <div className="flex flex-col gap-4 md:hidden px-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <h2 className="text-3xl font-serif">{title}</h2>
+            <h2 className="text-3xl font-display">{title}</h2>
             {badgePill}
           </div>
           {subtitle && <p className="text-xs text-gray-400 mb-2">{subtitle}</p>}

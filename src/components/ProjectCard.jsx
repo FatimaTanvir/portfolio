@@ -116,7 +116,7 @@ export default function ProjectCard({ slug, title, subtitle, description, thumbn
           {/* Content */}
           <div className="p-5 sm:p-6">
             <div className="flex items-center gap-2 mb-1.5">
-              <h3 className={`text-lg sm:text-xl font-serif text-[#3D3229] transition-colors duration-300 ${colors.hoverText}`}>
+              <h3 className={`text-lg sm:text-xl font-display text-[#3D3229] transition-colors duration-300 ${colors.hoverText}`}>
                 {title}
               </h3>
             </div>

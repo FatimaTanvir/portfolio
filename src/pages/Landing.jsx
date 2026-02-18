@@ -63,7 +63,7 @@ export default function LandingPage() {
         transition={{ duration: 0.5 }}
         className={`flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-8 ${isDark ? 'pointer-events-none' : ''}`}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 md:mb-6 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display mb-4 md:mb-6 text-center">
           {displayedText}
           <span className="animate-pulse">|</span>
         </h1>

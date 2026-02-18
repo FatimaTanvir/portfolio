@@ -27,7 +27,7 @@ export const projects = [
   {
     slug: 'medlens',
     title: 'MedLens',
-    subtitle: 'Best Use of ElevenLabs — CodeRed Hackathon 2025',
+    subtitle: 'Best Use of ElevenLabs | CodeRed Hackathon 2025',
     description: 'An AI-powered platform that translates complex medical reports into plain-language explanations patients can actually understand. Upload a PDF or image of your lab results, and MedLens breaks down the jargon using Google Gemini - with multilingual support in 20+ languages and text-to-speech powered by ElevenLabs.',
     thumbnail: '/projects/medlens/1.png',
     thumbnailType: 'image',
