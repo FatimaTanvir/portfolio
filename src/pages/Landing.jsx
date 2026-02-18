@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
@@ -7,7 +7,6 @@ import EyeTracker from '../components/Eyetracker'
 import { useTypewriter } from '../components/Typewriter'
 import Footer from '../components/Footer'
 
-// Moved outside LandingPage to avoid recreating on every render
 function CharacterCard({ image, alt, route, navigate }) {
   return (
     <motion.div
@@ -39,18 +38,17 @@ function CharacterCard({ image, alt, route, navigate }) {
         <img
           src={image}
           alt={alt}
-          className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
+          className="w-64 h-64 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
         />
       </motion.div>
     </motion.div>
   );
 }
 
-export default function LandingPage() {
+export default function LandingPage({ isDark, setIsDark }) {
   useEffect(() => { document.title = "Fatima Tanvir | Portfolio" }, [])
   const displayedText = useTypewriter("Hi, I'm Fatima.", 100);
   const navigate = useNavigate();
-  const [isDark, setIsDark] = useState(false);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -76,24 +74,9 @@ export default function LandingPage() {
 
         {/* Character Cards */}
         <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-8 sm:mb-10 md:mb-12 items-center justify-center w-full">
-          <CharacterCard
-            image="/TheDesigner.png"
-            alt="The Designer"
-            route="/designs"
-            navigate={navigate}
-          />
-          <CharacterCard
-            image="/TheEngineer.png"
-            alt="The Engineer"
-            route="/projects"
-            navigate={navigate}
-          />
-          <CharacterCard
-            image="/TheArtist.png"
-            alt="The Artist"
-            route="/creatives"
-            navigate={navigate}
-          />
+          <CharacterCard image="/TheDesigner.png" alt="The Designer" route="/designs" navigate={navigate} />
+          <CharacterCard image="/TheEngineer.png" alt="The Engineer" route="/projects" navigate={navigate} />
+          <CharacterCard image="/TheArtist.png" alt="The Artist" route="/creatives" navigate={navigate} />
         </div>
       </motion.div>
 
