@@ -40,7 +40,7 @@ export default function AboutMe() {
           </p>
         </div>
         <div className="flex flex-col items-center pb-2">
-          <img src="/plants.gif" alt="plants" className="w-40 object-contain" />
+          <img src="/gifs/plants.gif" alt="plants" className="w-40 object-contain" />
         </div>
         <div className="mt-auto">
           <Footer/>
@@ -94,7 +94,7 @@ export default function AboutMe() {
               src="/plants-static.png"
               alt="plants"
               className="w-48 object-contain"
-              onMouseEnter={e => e.currentTarget.src = '/plants.gif'}
+              onMouseEnter={e => e.currentTarget.src = '/gifs/plants.gif'}
               onMouseLeave={e => e.currentTarget.src = '/plants-static.png'}
             />
             <span className="text-xs text-gray-500 mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>Hover to bust a move :)</span>
