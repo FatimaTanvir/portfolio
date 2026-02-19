@@ -58,8 +58,8 @@ export default function ProjectDetail() {
         gifSize={project.gifSize}
         tools={project.tools}
         link={project.link}
+        link2={project.link2}
         extra={projectExtras[project.slug]}
-        badge={project.badge}
       />
       </div>
 

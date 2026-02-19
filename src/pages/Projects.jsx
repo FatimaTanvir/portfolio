@@ -25,7 +25,7 @@ export default function Projects() {
             <ProjectCard key={project.slug} {...project} index={i} />
           ))}
 
-          {/* "More coming soon" placeholder to fill the grid? */}
+          {/* "More coming soon" placeholder to fill the grid?
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function Projects() {
             <span className="text-3xl mb-3">💻</span>
             <p className="text-sm font-display text-[#000000]">More coming soon...</p>
             <p className="text-[11px] text-[#38250b] mt-1">Always building something new</p>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 

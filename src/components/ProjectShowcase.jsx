@@ -25,6 +25,7 @@ export default function ProjectShowcase({
   gifSide = 'left',
   gifSize = 'sm',
   link,
+  link2,
   extra,
   tools = [],
   badge,
@@ -127,18 +128,36 @@ export default function ProjectShowcase({
       </div>
       {subtitle && <p className="text-xs text-gray-400 mb-3">{subtitle}</p>}
       {description && (
-        <p className="text-sm text-gray-700 leading-relaxed mb-3">{description}</p>
+        <div className="text-sm text-gray-700 leading-relaxed mb-3">
+          {description.split('\n\n').map((para, i) => (
+            <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+          ))}
+        </div>
       )}
       {extra}
-      {link && (
-        <a
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors mt-4"
-        >
-          {link.label}
-        </a>
+      {(link || link2) && (
+        <div className="flex flex-wrap gap-3 mt-4">
+          {link && (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
+            >
+              {link.label}
+            </a>
+          )}
+          {link2 && (
+            <a
+              href={link2.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
+            >
+              {link2.label}
+            </a>
+          )}
+        </div>
       )}
     </div>
   )
@@ -169,18 +188,36 @@ export default function ProjectShowcase({
         </div>
         <div>
           {description && (
-            <p className="text-sm text-gray-700 leading-relaxed mb-3">{description}</p>
+            <div className="text-sm text-gray-700 leading-relaxed mb-3">
+              {description.split('\n\n').map((para, i) => (
+                <p key={i} className={i > 0 ? 'mt-3' : ''}>{para}</p>
+              ))}
+            </div>
           )}
           {extra}
-          {link && (
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors mt-2"
-            >
-              {link.label}
-            </a>
+          {(link || link2) && (
+            <div className="flex flex-wrap gap-3 mt-2">
+              {link && (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
+                >
+                  {link.label}
+                </a>
+              )}
+              {link2 && (
+                <a
+                  href={link2.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block border border-gray-300 rounded-full px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
+                >
+                  {link2.label}
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>

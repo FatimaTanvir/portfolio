@@ -2,9 +2,9 @@ export const projects = [
   {
     slug: 'webuild',
     title: 'WeBuild',
-    subtitle: 'Senior Capstone Project',
+    subtitle: 'Big Ideas need more than one brain.',
     badge: 'In Progress',
-    description: 'A full-stack collaboration platform built as a senior capstone project. WeBuild connects teams with a secure backend powered by Express and PostgreSQL, JWT-based authentication, and a React frontend — designed to streamline how groups plan and build projects together.',
+    description: 'Because posting "anyone wanna team up?" in a Discord server shouldn\'t be plan A.\n\nWeBuild is a full-stack platform that helps students find the right teammates for hackathons and side projects — browse profiles, filter by skills and experience level, and get matched with people who actually complement their stack. Built with React, Node.js, Express, PostgreSQL, and JWT-based auth to keep it all secure.',
     thumbnail: '/projects/webuild/WeBuild Figma.png',
     thumbnailType: 'image',
     gifs: ['/projects/webuild/WeBuild Figma.png'],
@@ -27,7 +27,7 @@ export const projects = [
   {
     slug: 'medlens',
     title: 'MedLens',
-    subtitle: 'Best Use of ElevenLabs | CodeRed Hackathon 2025',
+    subtitle: 'Best Use of ElevenLabs | CodeRed Hackathon',
     description: 'An AI-powered platform that translates complex medical reports into plain-language explanations patients can actually understand. Upload a PDF or image of your lab results, and MedLens breaks down the jargon using Google Gemini - with multilingual support in 20+ languages and text-to-speech powered by ElevenLabs.',
     thumbnail: '/projects/medlens/1.png',
     thumbnailType: 'image',
@@ -52,9 +52,9 @@ export const projects = [
   {
     slug: 'stride',
     title: 'Stride',
-    subtitle: 'CodePath Web Dev Final Project',
+    subtitle: 'Log it. Share it. Run it together.',
     badge: 'Refining',
-    description: 'A social platform for runners to share experiences, connect with fellow athletes, and discover new routes. Features include post creation with image uploads, an upvote system, commenting, search and category filtering, and a masonry grid layout — all backed by Supabase with real-time updates.',
+    description: 'A social platform for runners to share experiences, connect with fellow athletes, and discover new routes. Features include post creation with image uploads, an upvote system, commenting, search and category filtering, and a masonry grid layout — all backed by Supabase with real-time updates. \n\nCurrently working on user authentication.',
     thumbnail: '/projects/stride/1.png',
     thumbnailType: 'image',
     gifs: ['/projects/stride/1.png'],
@@ -122,7 +122,7 @@ export const projects = [
     slug: 'f1',
     title: 'A data driven glance at Formula 1',
     subtitle: 'Data Science Capstone Project',
-    description: 'This R-powered project takes a thrilling journey through the history of Formula 1, analyzing a rich dataset spanning from the sport\'s inception in 1950 up to the 2024 season. By employing statistical scrutiny and dynamic visualizations, my team and I dissect the performance evolution of current F1 teams. Our analysis spotlights trends in qualifying prowess, race victories, fastest lap speeds, and overall consistency, offering a data-driven perspective on the ever-evolving landscape of Formula 1 racing. We also put the iconic team, Ferrari, under the microscope for a more granular examination of their historical performance.',
+    description: 'Analyzed 70+ years of Formula 1 data (1950–2024) in R to uncover performance trends across qualifying, race wins, and fastest laps — with a deep-dive into Ferrari\'s historical trajectory. Developed dynamic data visualizations as part of a collaborative team-based data science capstone project.',
     thumbnail: '/projects/f1/1.png',
     thumbnailType: 'image',
     gifs: ['/projects/f1/1.png', '/projects/f1/2.png', '/projects/f1/3.png', '/projects/f1/4.png', '/projects/f1/5.png', '/projects/f1/6.png'],
@@ -132,7 +132,8 @@ export const projects = [
       { name: 'Completed in R', icon: 'https://cdn.simpleicons.org/r' },
     ],
     repo: 'https://github.com/FatimaTanvir/F1_data_analysis',
-    link: { href: 'https://docs.google.com/presentation/d/1tI60Dn2zNfbUSH7yMRwXMK4eYjEBcOF26XUC9FAtriI/edit?usp=sharing', label: 'View Presentation' },
+    link: { href: 'https://github.com/FatimaTanvir/F1_data_analysis', label: 'GitHub Repo' },
+    link2: { href: 'https://docs.google.com/presentation/d/1tI60Dn2zNfbUSH7yMRwXMK4eYjEBcOF26XUC9FAtriI/edit?usp=sharing', label: 'View Presentation' },
     color: 'terracotta',
   },
 
@@ -156,28 +157,6 @@ export const projects = [
     link: { href: 'https://github.com/FatimaTanvir/widdlemethis', label: 'Play?' },
     color: 'sand',
   },
-
-  {
-    slug: 'qr-code-generator',
-    title: 'QR Code Generator',
-    subtitle: 'A personal project built for fun and learning.',
-    description: 'A web app that generates QR codes from user input. Built with JavaScript, HTML, and CSS, it allows users to create custom QR codes for URLs, text, or other data. The project was a great way to practice DOM manipulation, canvas drawing, and responsive design.',
-    thumbnail: '/projects/qr-code-generator/1.png',
-    thumbnailType: 'image',
-    gifs: ['/projects/qr-code-generator/demo.gif', '/projects/qr-code-generator/1.png', '/projects/qr-code-generator/2.png'],
-    gifSide: 'left',
-    gifSize: '2xl',
-    tools: [
-      { name: 'JavaScript', icon: 'https://cdn.simpleicons.org/javascript' },
-      { name: 'HTML', icon: 'https://cdn.simpleicons.org/html5' },
-      { name: 'CSS', icon: 'https://cdn.simpleicons.org/css' },
-    ],
-    repo: 'https://github.com/FatimaTanvir/QR-Code-Generator',
-    link: { href: 'https://github.com/FatimaTanvir/QR-Code-Generator', label: 'Try it out!' },
-    color: 'clay',
-  },
-
-  
 
   // Add your other projects here! Each one follows the same shape:
   // {

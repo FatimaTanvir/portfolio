@@ -36,9 +36,6 @@ export const projectExtras = {
         <li>Text-to-speech via ElevenLabs for audio explanations with natural voice synthesis.</li>
         <li>Privacy-first — OCR processing handled locally with Tesseract and pdfplumber.</li>
       </ul>
-      <p className="text-sm text-gray-500 mb-4 italic">
-        Built to break down the barriers of medical literacy, language, and accessibility — so patients can understand their own health.
-      </p>
     </>
   ),
 
