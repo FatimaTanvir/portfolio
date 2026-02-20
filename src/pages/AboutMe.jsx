@@ -48,9 +48,9 @@ export default function AboutMe() {
       </main>
 
       {/*DESKTOP / TABLET layout*/}
-      <main className="hidden md:flex flex-1 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12">
+      <main className="hidden md:flex flex-1 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto w-full">
 
-        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-20 top-0 bottom-0 w-[24%] flex flex-col justify-start py-24">
+        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-20 xl:left-32 top-0 bottom-0 w-[24%] flex flex-col justify-start py-24">
           <div style={{ fontFamily: "'Montserrat', sans-serif" }}>
             <h2 className="text-[clamp(3rem,5.5vw,5.5rem)] leading-[1.05] tracking-tight text-gray-800" style={{ fontFamily: "'Squada One', sans-serif" }}>
               Software Developer
@@ -78,16 +78,16 @@ export default function AboutMe() {
         </div>
 
         <div className="absolute right-4 sm:right-6 md:right-8 lg:right-16 top-8 bottom-0 w-[35%] flex flex-col justify-center">
-          <p className="text-md lg:text-md text-black leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             Howdy! My name is Fatima Tanvir, a user-focused full stack developer and designer from Houston, TX.
           </p>
-          <p className="text-md lg:text-md text-black leading-relaxed mt-5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed mt-5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             Academically, I am a recent graduate from the University of Houston-Downtown
             with a BS in Computer Science with minors in Data Science and Mathematics. I focus on attention to detail, clean UI, thoughtful UX, and writing maintainable code.<br/> <br/>
             Beyond the classroom, I've had the opportunity to serve as President of the ACM chapter at UHD and mentor aspiring developers through CodePath.
           </p>
-          <p className="text-md lg:text-md text-black leading-relaxed mt-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            When I'm not online, you'll find me training for my next race (if I'm not injured), baking, or grabbing matcha with a friend. 
+          <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed mt-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            When I'm not online, you'll find me training for my next race (if I'm not injured), baking, or grabbing matcha with a friend.
           </p>
           <div className="flex flex-col items-center pt-8">
             <img

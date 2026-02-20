@@ -38,7 +38,7 @@ function CharacterCard({ image, alt, route, navigate }) {
         <img
           src={image}
           alt={alt}
-          className="w-64 h-64 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
+          className="w-64 h-64 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain"
         />
       </motion.div>
     </motion.div>
@@ -51,7 +51,7 @@ export default function LandingPage({ isDark, setIsDark }) {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="h-screen overflow-hidden bg-white flex flex-col">
       <Navbar isDark={isDark} setIsDark={setIsDark} showDarkToggle={true} />
       <EyeTracker isDark={isDark} />
 
@@ -59,24 +59,26 @@ export default function LandingPage({ isDark, setIsDark }) {
       <motion.div
         animate={{ opacity: isDark ? 0 : 1 }}
         transition={{ duration: 0.5 }}
-        className={`flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-8 ${isDark ? 'pointer-events-none' : ''}`}
+        className={`flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-2 md:py-4 min-h-0 ${isDark ? 'pointer-events-none' : ''}`}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display mb-4 md:mb-6 text-center">
-          {displayedText}
-          <span className="animate-blink">|</span>
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl lg:text-[24px] text-gray-600 mb-2 md:mb-3 text-center font-medium">
-          Wanna know more? Choose a character.
-        </p>
-        <p className="text-sm sm:text-base md:text-lg text-gray-500 mb-8 sm:mb-12 md:mb-16 lg:mb-20 text-center">
-          or... just click <Link to="/about" className="underline hover:text-black">here</Link>.
-        </p>
+        <div className="w-full max-w-[1600px] mx-auto flex flex-col items-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display mb-4 md:mb-6 text-center">
+            {displayedText}
+            <span className="animate-blink">|</span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-[24px] xl:text-[28px] text-gray-600 mb-2 md:mb-3 text-center font-medium">
+            Wanna know more? Choose a character.
+          </p>
+          <p className="text-sm sm:text-base md:text-lg xl:text-xl text-gray-500 mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center">
+            or... just click <Link to="/about" className="underline hover:text-black">here</Link>.
+          </p>
 
-        {/* Character Cards */}
-        <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-8 sm:mb-10 md:mb-12 items-center justify-center w-full">
-          <CharacterCard image="/TheDesigner.png" alt="The Designer" route="/designs" navigate={navigate} />
-          <CharacterCard image="/TheEngineer.png" alt="The Engineer" route="/projects" navigate={navigate} />
-          <CharacterCard image="/TheArtist.png" alt="The Artist" route="/creatives" navigate={navigate} />
+          {/* Character Cards */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-24 mb-4 sm:mb-6 md:mb-8 items-center justify-center w-full">
+            <CharacterCard image="/TheDesigner.png" alt="The Designer" route="/designs" navigate={navigate} />
+            <CharacterCard image="/TheEngineer.png" alt="The Engineer" route="/projects" navigate={navigate} />
+            <CharacterCard image="/TheArtist.png" alt="The Artist" route="/creatives" navigate={navigate} />
+          </div>
         </div>
       </motion.div>
 

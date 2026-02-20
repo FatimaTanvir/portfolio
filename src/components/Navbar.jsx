@@ -10,7 +10,7 @@ export default function Navbar({ isDark, setIsDark, showDarkToggle = false }) {
     <>
       {/* Navigation */}
       <nav className="px-4 sm:px-8 md:px-12 py-4 md:pt-6 relative z-50" aria-label="Main navigation">
-        <div className="hidden md:flex items-center justify-between w-full">
+        <div className="hidden md:flex items-center justify-between w-full max-w-[1600px] mx-auto">
           {!isDark && <Link to="/"><img src="/TimTim-logo.svg" alt="Logo" className="h-12 md:h-16" /></Link>}
           {isDark && <div className="h-12 md:h-16" />} {/* Spacer to maintain layout */}
 

@@ -14,15 +14,15 @@ export default function Projects() {
         <Navbar />
       </div>
       <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 pt-4 sm:pt-6">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display mb-1 sm:mb-2 text-center px-2 pb-8 sm:pb-10">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display mb-1 sm:mb-2 text-center px-2 pb-8 sm:pb-10">
           Noteworthy <span className="text-[#bd6a16]">Projects</span>
         </h1>
 
       </div>
 
       {/* Card Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pb-12 flex-1">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 pb-12 flex-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 xl:gap-12">
           {projects.map((project, i) => (
             <ProjectCard key={project.slug} {...project} index={i} />
           ))}
