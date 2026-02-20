@@ -8,7 +8,7 @@ export default function CircleCursor({
   ringBorderWidth = 2,
   hoverScale = 1.5,
   clickScale = 0.75,
-  animationDuration = 200,
+  animationDuration = 100,
   blendMode = "normal",
   opacity = 1,
   hideOnMobile = true,
