@@ -171,7 +171,7 @@ export default function ProjectShowcase({
   }[gifSize] || 'max-w-sm'
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 w-full">
+    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-20 py-2 w-full">
       
       {/* Mobile: title, subtitle, gif, then description/extra/link */}
       <div className="flex flex-col gap-4 md:hidden px-4">

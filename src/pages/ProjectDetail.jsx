@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { projects } from '../data/projects'
@@ -8,6 +9,7 @@ import ProjectShowcase from '../components/ProjectShowcase'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
+  useEffect(() => { window.scrollTo(0, 0) }, [slug])
   const projectIndex = projects.findIndex(p => p.slug === slug)
   const project = projects[projectIndex]
 
@@ -37,9 +39,9 @@ export default function ProjectDetail() {
   // const nextProject = projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className=" min-h-screen bg-white flex flex-col">
       <Navbar />
-      <div className="px-4 sm:px-6 pt-4 md:pt-6">
+      <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-6 lg:px-12 xl:px-20 pt-4 md:pt-6">
         <Link
           to="/projects"
           className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-black transition-colors mb-4"

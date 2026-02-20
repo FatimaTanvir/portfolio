@@ -83,7 +83,7 @@ export default function ProjectCard({ slug, title, subtitle, description, thumbn
         <div className="relative rounded-[10px] overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-400 z-10">
 
           {/* Thumbnail */}
-          <div className="aspect-video bg-[#F5F0E8] overflow-hidden flex items-center justify-center relative">
+          <Link to={`/projects/${slug}`} className="block aspect-video bg-[#F5F0E8] overflow-hidden flex items-center justify-center relative">
             {thumbnailType === 'icon' ? (
               <img
                 src={thumbnail}
@@ -102,16 +102,16 @@ export default function ProjectCard({ slug, title, subtitle, description, thumbn
 
             {/* Diagonal ribbon banner */}
             {badge && (
-              <div className="absolute top-0 right-0 overflow-hidden w-28 h-28 pointer-events-none">
+              <div className="absolute top-0 right-0 w-28 h-28 pointer-events-none">
                 <div
-                  className="absolute top-[14px] right-[-22px] w-[140px] text-center rounded-full py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm"
-                  style={{ backgroundColor: colors.from }}
+                  className="absolute top-[14px] right-[-22px] w-[140px] text-center rounded-full py-1 text-[10px] font-semibold uppercase tracking-wider text-white"
+                  style={{ backgroundColor: '#E85D04', boxShadow: '0 4px 0px #9c3b00, 0 6px 20px rgba(232, 93, 4, 0.5)' }}
                 >
                   {badge}
                 </div>
               </div>
             )}
-          </div>
+          </Link>
 
           {/* Content */}
           <div className="p-5 sm:p-6">

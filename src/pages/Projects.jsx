@@ -10,7 +10,7 @@ export default function Projects() {
   useEffect(() => { document.title = "Projects | Fatima Tanvir" }, [])
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <div className="sticky top-0 z-50 bg-white">
+      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md">
         <Navbar />
       </div>
       <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 pt-4 sm:pt-6">

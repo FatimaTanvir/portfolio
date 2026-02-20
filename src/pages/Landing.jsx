@@ -63,7 +63,7 @@ export default function LandingPage({ isDark, setIsDark }) {
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display mb-4 md:mb-6 text-center">
           {displayedText}
-          <span className="animate-pulse">|</span>
+          <span className="animate-blink">|</span>
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl lg:text-[24px] text-gray-600 mb-2 md:mb-3 text-center font-medium">
           Wanna know more? Choose a character.
