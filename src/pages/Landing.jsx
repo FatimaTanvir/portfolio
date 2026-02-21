@@ -51,7 +51,7 @@ export default function LandingPage({ isDark, setIsDark }) {
   const navigate = useNavigate();
 
   return (
-    <div className="h-dvh md:h-screen md:overflow-hidden bg-white flex flex-col">
+    <div className="min-h-dvh md:h-screen md:overflow-hidden bg-white flex flex-col">
       <Navbar isDark={isDark} setIsDark={setIsDark} showDarkToggle={true} />
       <EyeTracker isDark={isDark} />
 
