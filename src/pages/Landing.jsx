@@ -38,7 +38,7 @@ function CharacterCard({ image, alt, route, navigate }) {
         <img
           src={image}
           alt={alt}
-          className="w-64 h-64 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain"
+          className="w-52 h-52 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain"
         />
       </motion.div>
     </motion.div>
@@ -51,7 +51,7 @@ export default function LandingPage({ isDark, setIsDark }) {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen overflow-hidden bg-white flex flex-col">
+    <div className="h-dvh md:h-screen md:overflow-hidden bg-white flex flex-col">
       <Navbar isDark={isDark} setIsDark={setIsDark} showDarkToggle={true} />
       <EyeTracker isDark={isDark} />
 
@@ -74,7 +74,7 @@ export default function LandingPage({ isDark, setIsDark }) {
           </p>
 
           {/* Character Cards */}
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-24 mb-4 sm:mb-6 md:mb-8 items-center justify-center w-full">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-24 mb-4 sm:mb-6 md:mb-8 items-center justify-center w-full">
             <CharacterCard image="/TheDesigner.png" alt="The Designer" route="/designs" navigate={navigate} />
             <CharacterCard image="/TheEngineer.png" alt="The Engineer" route="/projects" navigate={navigate} />
             <CharacterCard image="/TheArtist.png" alt="The Artist" route="/creatives" navigate={navigate} />
