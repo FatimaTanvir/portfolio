@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],
+        montserrat: ['"Montserrat"', 'sans-serif'],
       },
     },
   },

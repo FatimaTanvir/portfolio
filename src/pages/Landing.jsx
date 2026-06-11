@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion'
 import { useNavigate, Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
-import EyeTracker from '../components/Eyetracker'
 import { useTypewriter } from '../components/Typewriter'
 import Footer from '../components/Footer'
 
@@ -45,22 +43,17 @@ function CharacterCard({ image, alt, route, navigate }) {
   );
 }
 
-export default function LandingPage({ isDark, setIsDark }) {
+export default function LandingPage() {
   useEffect(() => { document.title = "Fatima Tanvir | Portfolio" }, [])
   const displayedText = useTypewriter("Hi, I'm Fatima.", 100);
   const navigate = useNavigate();
 
   return (
     <div className="min-h-dvh md:h-screen md:overflow-hidden bg-white flex flex-col">
-      <Navbar isDark={isDark} setIsDark={setIsDark} showDarkToggle={true} />
-      <EyeTracker isDark={isDark} />
+      <Navbar />
 
       {/* Main Content */}
-      <motion.div
-        animate={{ opacity: isDark ? 0 : 1 }}
-        transition={{ duration: 0.5 }}
-        className={`flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-2 md:py-4 min-h-0 ${isDark ? 'pointer-events-none' : ''}`}
-      >
+      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-2 md:py-4 min-h-0">
         <div className="w-full max-w-[1600px] mx-auto flex flex-col items-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display mb-4 md:mb-6 text-center">
             {displayedText}
@@ -80,7 +73,7 @@ export default function LandingPage({ isDark, setIsDark }) {
             <CharacterCard image="/TheArtist.png" alt="The Artist" route="/creatives" navigate={navigate} />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       <Footer />
     </div>

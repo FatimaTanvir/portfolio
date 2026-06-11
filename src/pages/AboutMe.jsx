@@ -17,10 +17,10 @@ export default function AboutMe() {
       <main className="flex md:hidden flex-col flex-1 px-6 pt-8 overflow-y-auto">
         <div className="ml-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           <h2 className="text-[clamp(3.8rem,18vw,7rem)] leading-[1.05] tracking-tight text-gray-800" style={{ fontFamily: "'Squada One', sans-serif" }}>
-            Software Developer
+            UX Engineer
           </h2>
           <p className="text-[clamp(1.4rem,6vw,2.5rem)] leading-snug tracking-tight text-green-600 font-light mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            with an eye for Design
+            with an eye for the details
           </p>
         </div>
 
@@ -28,7 +28,7 @@ export default function AboutMe() {
 
         <div className="flex flex-col gap-4 text-black" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           <p className="text-md ml-4 leading-relaxed">
-            Howdy! I'm a user-focused full stack developer and designer from Houston, TX.
+            Howdy! I'm a user obsessed UX Engineer from Houston, TX.
           </p>
           <p className="text-md ml-4 leading-relaxed">
             Academically, I am a recent graduate from the University of Houston-Downtown
@@ -53,10 +53,10 @@ export default function AboutMe() {
         <div className="absolute left-4 sm:left-6 md:left-8 lg:left-20 xl:left-32 top-0 bottom-0 w-[24%] flex flex-col justify-start py-24">
           <div style={{ fontFamily: "'Montserrat', sans-serif" }}>
             <h2 className="text-[clamp(3rem,5.5vw,5.5rem)] leading-[1.05] tracking-tight text-gray-800" style={{ fontFamily: "'Squada One', sans-serif" }}>
-              Software Developer
+              UX Engineer
             </h2>
             <p className="text-[clamp(1.3rem,2.2vw,2.2rem)] leading-snug tracking-tight text-green-600 font-light mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              with an eye for Design
+              with an eye for the details
             </p>
           </div>
           <div className="items-left flex flex-col gap-4 sm:gap-8 md:gap-3 text-gray-400 mb-2 md:mb-3 lg:mb-4 pt-40">
@@ -79,7 +79,7 @@ export default function AboutMe() {
 
         <div className="absolute right-4 sm:right-6 md:right-8 lg:right-16 top-8 bottom-0 w-[35%] flex flex-col justify-center">
           <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            Howdy! My name is Fatima Tanvir, a user-focused full stack developer and designer from Houston, TX.
+            Howdy! My name is Fatima Tanvir, a user-obsessed UX Engineer from Houston, TX.
           </p>
           <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed mt-5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             Academically, I am a recent graduate from the University of Houston-Downtown

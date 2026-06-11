@@ -1,29 +1,44 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Landing from './pages/Landing'
 import AboutMe from './pages/AboutMe'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import Designs from './pages/Designs'
+import CookarooCase from './pages/CookarooCase'
 import Creatives from './pages/Creatives'
 import Page404 from './pages/Error'
 import CircleCursor from './components/CircleCursor'
 
-function App() {
-  const [isDark, setIsDark] = useState(false)
+const DESIGN_BRANDS = {
+  '/designs/cookaroo': '#D2551E',
+}
+
+function CursorManager() {
+  const { pathname } = useLocation()
+  const brandColor = DESIGN_BRANDS[pathname]
 
   return (
+    <CircleCursor
+      dotColor={brandColor || 'black'}
+      ringColor={brandColor || 'black'}
+    />
+  )
+}
+
+function App() {
+  return (
     <BrowserRouter>
-        <CircleCursor isDark={isDark} />
-        <Routes>
-          <Route path="/" element={<Landing isDark={isDark} setIsDark={setIsDark} />} />
-          <Route path="/about" element={<AboutMe />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetail />} />
-          <Route path="/designs" element={<Designs />} />
-          <Route path="/creatives" element={<Creatives />} />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
+      <CursorManager />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/about" element={<AboutMe />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
+        <Route path="/designs" element={<Designs />} />
+        <Route path="/designs/cookaroo" element={<CookarooCase />} />
+        <Route path="/creatives" element={<Creatives />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
     </BrowserRouter>
   )
 }
