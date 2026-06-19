@@ -5,12 +5,14 @@ import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import Designs from './pages/Designs'
 import CookarooCase from './pages/CookarooCase'
+import ACMCase from './pages/ACMCase'
 import Creatives from './pages/Creatives'
 import Page404 from './pages/Error'
 import CircleCursor from './components/CircleCursor'
 
 const DESIGN_BRANDS = {
   '/designs/cookaroo': '#D2551E',
+  '/designs/acm':      '#E8743B',
 }
 
 function CursorManager() {
@@ -36,6 +38,7 @@ function App() {
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/designs" element={<Designs />} />
         <Route path="/designs/cookaroo" element={<CookarooCase />} />
+        <Route path="/designs/acm" element={<ACMCase />} />
         <Route path="/creatives" element={<Creatives />} />
         <Route path="*" element={<Page404 />} />
       </Routes>

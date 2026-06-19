@@ -38,7 +38,7 @@ const designs = [
     textDark: false,
     coloredSide: 'left',
     images: ['/projects/UHDACM/Mockup.gif'],
-    link: { href: '#', label: 'Case Study coming soon' },
+    link: { href: '/designs/acm', label: 'View Case Study', internal: true },
   },
   {
     id: 4,
