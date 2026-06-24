@@ -139,7 +139,7 @@ export default function ACMCase() {
                   { label: 'Role',     value: 'UX Engineer · 1 of 2 designers · Backend contributor' },
                   { label: 'Tools',    value: 'Figma · React · Typescript · Express JS · Postman' },
                   { label: 'Team',     value: '10 members · 2 designers, 6 engineers, 1 PM, 1 critic' },
-                  { label: 'Duration',  value: '3 months' },
+                  { label: 'Duration',  value: 'March to June 2026' },
                   { label: 'Status',  value: 'Live at uhdacm.org' },
                 ].map(({ label, value }) => (
                   <div key={label} className="px-5 py-5 first:pl-0 last:pr-0">
@@ -155,7 +155,7 @@ export default function ACMCase() {
           <Wrap className="py-20">
             <Label>Overview</Label>
             <p className="text-gray-700 leading-relaxed text-base mb-5 max-w-2xl">
-              I wasn't a neutral contributor on this project. UHD ACM was my organization. I was a member, I cared about what it stood for, and I went on to serve as chapter president in Fall 2025. The site I helped redesign would become the one I was responsible for. That's a different relationship to the work than designing for a client you'll hand off to.
+              Students at UHD were showing up to a site that gave them no reason to stay. Events were buried. Membership was unclear. There was nothing that communicated what ACM actually was or why a student should care. I had served as Chapter President in Fall 2025 and knew exactly where it was failing. After graduating, I came back to fix it.
             </p>
             <p className="text-gray-700 leading-relaxed text-base max-w-2xl">
               I had one real goal: students should land on this site and want to join ACM. The visual identity, the Events system, the chatbot: everything we built existed to serve that. If a design decision didn't help a student find an event, understand what ACM was, or feel like this was a community worth joining, it didn't earn its place.
@@ -179,10 +179,10 @@ export default function ACMCase() {
             <Wrap>
               <Label>My Role</Label>
               <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-6 leading-tight">
-                Designer, engineer, and a member of the org whose site I was rebuilding.
+                Designing for a community I had already led.
               </h2>
               <p className="text-gray-500 leading-relaxed mb-10 max-w-2xl">
-                UHD ACM was my organization. I went on to serve as chapter president after this project, which meant the design decisions I made here were ones I'd be living with. This wasn't a client I'd hand off to. The students using this site were people I knew. I was one of two designers on the team, and we worked together on the redesign and research from the ground up. I also contributed to backend development alongside the engineering team, which meant I could advocate for the user at every layer without losing sight of what was actually shippable.
+                The students using this site were people I had organized events for, advocated for, and worked alongside. When I came back as a recent graduate to lead this redesign, I wasn't working from assumptions about the user. I already knew them. I was one of two designers on the team and we worked together on the redesign and research from the ground up. I also contributed to backend development alongside the engineering team, which meant I could advocate for the student at every layer of the stack.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4">
@@ -231,7 +231,7 @@ export default function ACMCase() {
               Starting with students who already had opinions.
             </h2>
             <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
-              Before anything touched Figma, I interviewed students across the department. I wanted to understand how and whether they used the existing site, what would make an ACM web presence genuinely useful to them, and where the current experience was quietly falling short. What came back wasn't surprising in hindsight, but it was specific enough to act on.
+              Before designing in Figma, I interviewed students across the department. I wanted to understand how and whether they used the existing site, what would make an ACM web presence genuinely useful to them, and where the current experience was quietly falling short. What came back wasn't surprising in hindsight, but it was specific enough to act on.
             </p>
 
             <Label>What We Heard</Label>
@@ -279,7 +279,7 @@ export default function ACMCase() {
             <Wrap>
               <Label>Old Site Audit</Label>
               <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-4 leading-tight">
-                Before writing a single line of new design, we annotated the old one.
+                Before working on a new design, we annotated the old one.
               </h2>
               <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
                 Every broken pattern, every dead end, every moment a student would give up, documented, discussed, and prioritized so we had something concrete to design against instead of just a feeling that the site was bad.
@@ -321,7 +321,7 @@ export default function ACMCase() {
               Navigation built around what students came to do.
             </h2>
             <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
-              The old navigation was organized around how the org thought about itself: officers, news, contact. Not what students came to the site to accomplish. I rebuilt the structure from the students' perspective outward, which meant cutting "Officers" and "News" as top-level destinations. Both had value internally, but neither answered a question a visiting student was actually asking.
+              The old navigation was organized around how the org thought about itself: officers, contact. Not what students came to the site to accomplish. I rebuilt the structure from the students' perspective outward, which meant cutting "Officers" as top-level destinations. Both had value internally, but neither answered a question a visiting student was actually asking.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-8 items-start mb-12">
@@ -562,7 +562,7 @@ export default function ACMCase() {
             </h2>
             <div className="space-y-5 max-w-3xl">
               <p className="text-gray-600 leading-relaxed text-sm">
-                This project was entirely personal. UHD ACM wasn't a portfolio piece; it was my organization. I went on to serve as Chapter President in Fall 2025, which meant there was no luxury of hand-off bias. I was building a product for peers whose names I knew and whose struggles I witnessed daily.
+                This project was entirely personal. UHD ACM wasn't a portfolio piece; it was my organization. By the time I started this redesign as a recent graduate, I had spent a year watching students struggle with the very problems we were solving. There was no hand-off bias possible. I was building a product for peers whose names I knew and whose struggles I had witnessed firsthand.
               </p>
               <p className="text-gray-600 leading-relaxed text-sm">
                 Developing the AI Assistant chatbot was a pivotal milestone in my technical growth as a UX Engineer. It was the first time I owned an entire feature lifecycle: from user research to architecting the RESTful API structures to coding the responsive React frontend. That experience proved something I had suspected. Deeply understanding both sides of the stack sharpens a designer's focus and ensures every layout stays realistic and shippable.
