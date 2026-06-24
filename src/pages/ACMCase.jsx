@@ -204,7 +204,7 @@ export default function ACMCase() {
             <Label>What We Heard</Label>
             <div className="space-y-5 mb-16">
               {[
-                '"I didn\'t even know ACM had a website. I just heard about events through my firends and Instagram."',
+                '"I didn\'t even know ACM had a website. I just heard about events through my friends and Instagram."',
                 '"The site doesn\'t really feel like ACM. It just looks like a generic school page."',
                 '"I couldn\'t tell what ACM actually does or who it\'s for from the homepage."',
               ].map((quote) => (

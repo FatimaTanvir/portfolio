@@ -8,7 +8,7 @@ const PROTO = 'https://www.figma.com/proto/SPfQNlcCetAxBvdMgHuqb5/Mockup---Cooka
 const FILE  = 'https://www.figma.com/design/SPfQNlcCetAxBvdMgHuqb5/Mockup---Cookaroo'
 
 // ── Set to true when the case study is ready to publish ──────────────────────
-const SHOW_CASE_STUDY = true
+const SHOW_CASE_STUDY = false
 
 function Label({ children, light = false }) {
   return (
