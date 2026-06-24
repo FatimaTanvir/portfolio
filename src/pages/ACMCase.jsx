@@ -553,6 +553,31 @@ export default function ACMCase() {
             </Wrap>
           </div>
 
+          {/* ─── CLOSING THE LOOP ─────────────────────────────────────────── */}
+          <Wrap className="pt-20 pb-4">
+            <Label>Closing the Loop</Label>
+            <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-4 leading-tight">
+              Back to the students.
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-10 max-w-2xl">
+              After launch, we collected feedback from students who used the new site. These are their words.
+            </p>
+            <div className="space-y-8">
+              {[
+                { quote: 'I love the new site, it\'s modern and I really like the interactive elements.', attr: 'UHD Sophomore CS Student' },
+                { quote: 'I can clearly see what UHD ACM is all about and I really wish I\'d known about it sooner.', attr: 'UHD Junior CS Student' },
+                { quote: 'I had no idea UHD ACM has been around since 2012!', attr: 'UHD Senior CS Student' },
+              ].map(({ quote, attr }) => (
+                <div key={quote} className="pl-5 border-l-4" style={{ borderColor: BRAND }}>
+                  <p className="text-lg sm:text-xl font-montserrat font-semibold text-gray-900 leading-snug italic mb-2">
+                    "{quote}"
+                  </p>
+                  <p className="text-xs text-gray-400 uppercase tracking-widest">{attr}</p>
+                </div>
+              ))}
+            </div>
+          </Wrap>
+
           {/* ─── REFLECTION ───────────────────────────────────────────────── */}
           <Wrap className="py-20">
             <hr className="border-gray-100 mb-16" />
