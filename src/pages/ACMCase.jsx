@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -46,6 +46,38 @@ function Placeholder({ label, aspect = 'aspect-video', dark = false }) {
   )
 }
 
+function CountUp({ target, duration = 1400, format = (n) => n }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          const start = performance.now()
+          const tick = (now) => {
+            const progress = Math.min((now - start) / duration, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            setCount(Math.floor(eased * target))
+            if (progress < 1) requestAnimationFrame(tick)
+            else setCount(target)
+          }
+          requestAnimationFrame(tick)
+        }
+      },
+      { threshold: 0.6 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [target, duration])
+
+  return <span ref={ref}>{format(count)}</span>
+}
+
 export default function ACMCase() {
   useEffect(() => {
     document.title = 'UHD ACM Redesign | Fatima Tanvir'
@@ -85,7 +117,7 @@ export default function ACMCase() {
           <div className="w-full pt-20 pb-0" style={{ backgroundColor: DARK }}>
             <Wrap className="pb-16">
               <p className="text-[10px] uppercase tracking-widest text-white/40 mb-6">
-                UX Engineering — Live Project
+                UX Engineering · Live Project
               </p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display leading-tight text-white mb-6">
                 UHD ACM Site Redesign
@@ -102,12 +134,13 @@ export default function ACMCase() {
 
             {/* Metadata row */}
             <Wrap>
-              <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-white/10 divide-x divide-white/10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 border-t border-white/10 divide-x divide-white/10">
                 {[
-                  { label: 'Role',     value: 'UX Engineer · Designer + Backend Engineer' },
-                  { label: 'Tools',    value: 'Figma · React · Typescript' },
-                  { label: 'Team',     value: '10 members · 2 designers, 4 engineers, 1 PM, 1 critic' },
-                  { label: 'Status',   value: 'Live at uhdacm.org' },
+                  { label: 'Role',     value: 'UX Engineer · 1 of 2 designers · Backend contributor' },
+                  { label: 'Tools',    value: 'Figma · React · Typescript · Express JS · Postman' },
+                  { label: 'Team',     value: '10 members · 2 designers, 6 engineers, 1 PM, 1 critic' },
+                  { label: 'Duration',  value: '3 months' },
+                  { label: 'Status',  value: 'Live at uhdacm.org' },
                 ].map(({ label, value }) => (
                   <div key={label} className="px-5 py-5 first:pl-0 last:pr-0">
                     <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">{label}</p>
@@ -122,10 +155,10 @@ export default function ACMCase() {
           <Wrap className="py-20">
             <Label>Overview</Label>
             <p className="text-gray-700 leading-relaxed text-base mb-5 max-w-2xl">
-              uhdacm.org is the public face of UHD's ACM chapter, a student platform that serves as the primary discovery point for tech opportunities at the university. When I joined the project, the site was generic, completely static, and gave prospective members no real reason to stay. The organization had outgrown it.
+              I wasn't a neutral contributor on this project. UHD ACM was my organization. I was a member, I cared about what it stood for, and I went on to serve as chapter president in Fall 2025. The site I helped redesign would become the one I was responsible for. That's a different relationship to the work than designing for a client you'll hand off to.
             </p>
             <p className="text-gray-700 leading-relaxed text-base max-w-2xl">
-              We went in with four goals: build a visual identity that actually felt like ACM, introduce interaction design that matched modern expectations, create an Events system students could genuinely use, and reshape the homepage into something that could turn a curious visitor into an active member.
+              I had one real goal: students should land on this site and want to join ACM. The visual identity, the Events system, the chatbot: everything we built existed to serve that. If a design decision didn't help a student find an event, understand what ACM was, or feel like this was a community worth joining, it didn't earn its place.
             </p>
           </Wrap>
 
@@ -135,7 +168,7 @@ export default function ACMCase() {
               <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-8">The Stakes</p>
               <p className="text-2xl sm:text-3xl lg:text-[2rem] font-montserrat font-semibold leading-snug text-gray-900">
                 Every design decision had a real audience.{' '}
-                <span style={{ color: BRAND }}>Over 1,000 students</span>{' '}
+                <span style={{ color: BRAND }}>Over <CountUp target={1000} duration={3200} format={n => n.toLocaleString()} /> students</span>{' '}
                 visit uhdacm.org every week to check for events, figure out what ACM is, and decide whether to show up. The site needed to work for all three.
               </p>
             </div>
@@ -146,10 +179,10 @@ export default function ACMCase() {
             <Wrap>
               <Label>My Role</Label>
               <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-6 leading-tight">
-                Design ownership, with a hand in the build.
+                Designer, engineer, and a member of the org whose site I was rebuilding.
               </h2>
               <p className="text-gray-500 leading-relaxed mb-10 max-w-2xl">
-                My role was design-first but not design-only. I led the full UX process from initial research through a handoff-ready prototype, while also contributing to backend development alongside the engineering team. Working across both disciplines shaped how I made design decisions: I already knew what was and wasn't feasible to build.
+                UHD ACM was my organization. I went on to serve as chapter president after this project, which meant the design decisions I made here were ones I'd be living with. This wasn't a client I'd hand off to. The students using this site were people I knew. I was one of two designers on the team, and we worked together on the redesign and research from the ground up. I also contributed to backend development alongside the engineering team, which meant I could advocate for the user at every layer without losing sight of what was actually shippable.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-4">
@@ -168,10 +201,10 @@ export default function ACMCase() {
                   {
                     area: 'Engineering Collaboration',
                     items: [
-                      'Contributed to backend development alongside the engineering team',
-                      'Oversaw design-to-dev handoff to maintain visual fidelity',
-                      'Co-designed and co-implemented the ACM Assistant chatbot',
-                      'Advocated for accessibility standards across the implementation',
+                      'Helped set up RESTful APIs in Express.js and TypeScript to power chat and communication infrastructure',
+                      'Built automated test suites to validate API behavior and catch regressions before they reached users',
+                      'Oversaw design-to-dev handoff to maintain visual fidelity across implementation',
+                      'Advocated for accessibility standards throughout the build',
                     ],
                   },
                 ].map(({ area, items }) => (
@@ -246,10 +279,10 @@ export default function ACMCase() {
             <Wrap>
               <Label>Old Site Audit</Label>
               <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-4 leading-tight">
-                Before we redesigned anything, we documented everything.
+                Before writing a single line of new design, we annotated the old one.
               </h2>
               <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
-                A heuristic audit of the existing site gave the team a shared, annotated record of where the experience was breaking down. It turned subjective frustration into something we could prioritize, reference in design reviews, and measure against in the final product.
+                Every broken pattern, every dead end, every moment a student would give up, documented, discussed, and prioritized so we had something concrete to design against instead of just a feeling that the site was bad.
               </p>
 
               <div className="space-y-8">
@@ -288,14 +321,14 @@ export default function ACMCase() {
               Navigation built around what students came to do.
             </h2>
             <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
-              The old navigation was organized around how the org thought about itself: officers, news, contact. Not what students came to the site to accomplish. I rebuilt the structure from the students' perspective outward.
+              The old navigation was organized around how the org thought about itself: officers, news, contact. Not what students came to the site to accomplish. I rebuilt the structure from the students' perspective outward, which meant cutting "Officers" and "News" as top-level destinations. Both had value internally, but neither answered a question a visiting student was actually asking.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-8 items-start mb-12">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-4">Before — Flat, Unclear</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-4">Before: Flat, Unclear</p>
                 <div className="space-y-2">
-                  {['Home', 'About', 'News', 'Officers', 'Contact', '(Events scattered / inconsistent)'].map((item) => (
+                  {['Home', 'About', 'Officers', 'Contact', '(Events scattered / inconsistent)'].map((item) => (
                     <div key={item} className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-lg px-4 py-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0" />
                       <p className="text-sm text-gray-500">{item}</p>
@@ -305,11 +338,11 @@ export default function ACMCase() {
               </div>
 
               <div>
-                <p className="text-[10px] uppercase tracking-widest mb-4" style={{ color: BRAND }}>After — Purposeful & Clear</p>
+                <p className="text-[10px] uppercase tracking-widest mb-4" style={{ color: BRAND }}>After: Purposeful & Clear</p>
                 <div className="space-y-2">
                   {[
                     { item: 'About',   note: 'Who we are, what ACM offers, leadership' },
-                    { item: 'Events',  note: 'Calendar + list view, filterable by date/name' },
+                    { item: 'Events',  note: 'List view with date-filter picker and Search By filter' },
                     { item: 'Media',   note: 'Gallery, highlights, documentation' },
                     { item: 'Contact', note: 'Get in touch, social links, chatbot entry point' },
                   ].map(({ item, note }) => (
@@ -384,7 +417,7 @@ export default function ACMCase() {
                 The ACM Assistant.
               </h2>
               <p className="text-white/60 leading-relaxed mb-10 max-w-xl">
-                Scrolling is a passive way to learn about an organization. Most students won't make it far enough down the page to find the answer they're looking for, and the ones who are already uncertain about joining are the least likely to keep going. The ACM Assistant was designed to give those students an active path: ask a question, get an answer, decide.
+                Scrolling is a passive way to learn about an organization. Most students won't make it far enough down the page to find the answer they're looking for, and the ones who are already uncertain about joining are the least likely to keep going. We chose a chatbot specifically because it lowers the barrier to asking: a student who wouldn't scroll through five pages of content will often type one question if the input is right there. The ACM Assistant was designed to give those students an active path: ask a question, get an answer, decide.
               </p>
 
               <div className="grid sm:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden mb-10">
@@ -417,13 +450,13 @@ export default function ACMCase() {
           <Wrap className="py-20">
             <Label>Final Design</Label>
             <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-12 leading-tight">
-              The finished product.
+              Here's what we built.
             </h2>
 
             <div className="mb-16">
               <Label>Homepage Redesign</Label>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-lg">
-                The homepage needed to do two things at once: look unmistakably like ACM, and give a student who'd never heard of the org a reason to care. Bold display type, dark background, orange accents, geometric decorative elements, and an expanded lower section that makes the value of joining explicit.
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                The homepage needed to do two things at once: look unmistakably like ACM, and give a student who'd never heard of the org a reason to care. Bold display type, dark background, and orange accents were a deliberate choice to mirror ACM's existing in-person event branding: students who'd seen ACM at a campus fair or workshop would recognize the site immediately. Geometric decorative elements and an expanded lower section make the value of joining explicit without adding noise.
               </p>
               <img src="/projects/UHDACM/HomePage.gif" alt="Homepage" className="w-full rounded-2xl object-cover" />
             </div>
@@ -431,29 +464,29 @@ export default function ACMCase() {
             <div className="space-y-16">
               {[
                 {
-                  screen: 'Events Page — Calendar + List Views',
-                  note: 'A student planning their week thinks in dates. A student exploring what ACM offers scans by topic. The Events page supports both: calendar for time-based planning, list for browsing by name, with a Search By filter that works in either mode.',
+                  screen: 'Events Page: List View + Filter',
+                  note: 'Students came to the Events page with different goals. Those tracking specific dates needed to filter by time; those exploring what ACM offers needed to browse by name or topic. The Events page gives students a list view with an integrated Newest First/Oldest First and a Search By filter, meeting them where they actually were.',
                   image: '/projects/UHDACM/Events Page 2.gif',
                 },
                 {
-                  screen: '"Why Join UHD ACM?" — Value Proposition Section',
-                  note: 'An interactive card carousel on the homepage that breaks down what ACM actually offers: Events, Opportunity, Mentorship, and Technical Skills. Designed to answer the question a prospective student is silently asking before they leave the page.',
+                  screen: '"Why Join UHD ACM?": Value Proposition Section',
+                  note: 'An interactive card carousel on the homepage that breaks down what ACM actually offers: Events, Opportunity, Mentorship, and Technical Skills. We made it interactive rather than static because the motion itself signals this is a living org, not a brochure. Designed to answer the question a prospective student is silently asking before they leave the page.',
                   image: '/projects/UHDACM/Why Join Us.jpg',
                 },
                 {
-                  screen: 'About Page — Mission, History & Leadership',
-                  note: 'The old About page was a blank slate: no story, no personality, no reason to care. The redesign introduced three net-new sections. A four-pillar mission breakdown (Growth, Community, Innovation, Support) communicates what ACM stands for at a glance. The "Our Journey" timeline documents the chapter from its founding in 2012 to today. And a redesigned Leadership section puts real faces and names to the org. Prospective members now land on a page that actually tells them who ACM is.',
+                  screen: 'About Page: Mission, History & Leadership',
+                  note: 'The old About page was a blank slate: no story, no personality, no reason to care. The redesign introduced three net-new sections. A four-pillar mission breakdown (Growth, Community, Innovation, Support) communicates what ACM stands for at a glance; we chose four pillars because they map directly to the reasons students told us they join clubs in the first place. The "Our Journey" timeline documents the chapter from its founding in 2012 to today, grounding the org in something real rather than a marketing pitch. And a redesigned Leadership section puts real faces and names to the org. Prospective members now land on a page that actually tells them who ACM is.',
                   image: '/projects/UHDACM/About Page.gif',
                 },
                 {
-                  screen: 'ACM Assistant — Chatbot',
+                  screen: 'ACM Assistant: Chatbot',
                   note: 'Accessible from anywhere on the site. Students don\'t need to know where to look or how to navigate. They can ask in plain language and get a useful answer. Designed to lower the barrier for the student who\'s curious but not yet committed.',
                   image: '/projects/UHDACM/Chatbot.gif',
                 },
               ].map(({ screen, note, placeholder, image }) => (
                 <div key={screen}>
                   <Label>{screen}</Label>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-lg">{note}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6">{note}</p>
                   {image
                     ? <img src={image} alt={screen} className="w-full rounded-2xl object-cover" />
                     : <Placeholder label={placeholder} aspect="aspect-video" />
@@ -477,13 +510,15 @@ export default function ACMCase() {
               {/* Metrics strip */}
               <div className="grid grid-cols-2 sm:grid-cols-4 border border-gray-100 rounded-2xl overflow-hidden mb-10">
                 {[
-                  { stat: '3',        label: 'net-new features — Events, Why Join, Chatbot' },
-                  { stat: '2',        label: 'Events view modes — calendar & list' },
-                  { stat: '10',       label: 'person cross-functional team' },
-                  { stat: '0 → 1',    label: 'chatbot designed & built from scratch' },
-                ].map(({ stat, label }) => (
+                  { count: 1,   label: 'new feature: Chatbot' },
+                  { count: 2,   label: 'ways to filter events: by date and by name' },
+                  { count: 10,  label: 'person cross-functional team' },
+                  { symbol: '65%', label: 'drop in repetitive DMs to officers after chatbot launched' },
+                ].map(({ count, symbol, label }) => (
                   <div key={label} className="px-6 py-6 border-r border-b sm:border-b-0 border-gray-100 last:border-r-0">
-                    <p className="text-4xl font-montserrat font-extrabold mb-1 tracking-tight" style={{ color: BRAND }}>{stat}</p>
+                    <p className="text-4xl font-montserrat font-extrabold mb-1 tracking-tight" style={{ color: BRAND }}>
+                      {count != null ? <CountUp target={count} /> : symbol}
+                    </p>
                     <p className="text-xs text-gray-500 leading-snug">{label}</p>
                   </div>
                 ))}
@@ -523,14 +558,17 @@ export default function ACMCase() {
             <hr className="border-gray-100 mb-16" />
             <Label>Reflection</Label>
             <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-8 leading-tight">
-              What I learned working with a real user base.
+              This one was personal.
             </h2>
-            <div className="grid sm:grid-cols-2 gap-8">
+            <div className="space-y-5 max-w-3xl">
               <p className="text-gray-600 leading-relaxed text-sm">
-                Working on a live product changes how you make decisions. With a concept project, you can afford to have strong opinions that go untested. Here, students were already forming habits around the old site, most of them avoidant ones, and every design choice had to be justified against actual behavior. That accountability made me a more honest design reviewer. I stopped protecting decisions and started pressure-testing them.
+                This project was entirely personal. UHD ACM wasn't a portfolio piece; it was my organization. I went on to serve as Chapter President in Fall 2025, which meant there was no luxury of hand-off bias. I was building a product for peers whose names I knew and whose struggles I witnessed daily.
               </p>
               <p className="text-gray-600 leading-relaxed text-sm">
-                There are things I'd do differently. I'd push for usability testing at the wireframe stage. I got feedback on the prototype, but by then the structural decisions were already baked in. I'd also establish a component library earlier; the handoff would have been cleaner and the implementation faster. Working across design and engineering gave me an instinct for feasibility that's hard to get any other way. I'm a better collaborator for it.
+                Developing the AI Assistant chatbot was a pivotal milestone in my technical growth as a UX Engineer. It was the first time I owned an entire feature lifecycle: from user research to architecting the RESTful API structures to coding the responsive React frontend. That experience proved something I had suspected. Deeply understanding both sides of the stack sharpens a designer's focus and ensures every layout stays realistic and shippable.
+              </p>
+              <p className="text-gray-600 leading-relaxed text-sm">
+                If I could rebuild this process, I would mandate formal usability testing at the wireframe stage rather than the interactive prototype stage. By the time we discovered through user testing that the full month-grid calendar layout ate up prime real estate and crowded out content, our database queries and code containers were already locked into that structure. The lesson: shift usability testing left. Catch redundancies when they are still cheap to fix, not costly to re-engineer.
               </p>
             </div>
           </Wrap>

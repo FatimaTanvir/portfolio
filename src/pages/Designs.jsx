@@ -22,7 +22,7 @@ const designs = [
   {
     id: 2,
     title: 'Pivot',
-    context: 'Google UX Professional Certificate — Capstone',
+    context: 'Google UX Professional Certificate: Capstone',
     tagline: 'A mobile app that helps adults with ADHD start tasks, take real breaks, and actually come back.',
     colorClass: 'bg-blue-500',
     textDark: false,

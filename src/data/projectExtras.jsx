@@ -10,7 +10,7 @@ export const projectExtras = {
         <li>Built 3D models of 11 surgical instruments and imported them into a Gazebo simulation with the UR5 arm</li>
         <li>Captured synthetic training images from the simulation environment</li>
         <li>Annotated the dataset with bounding boxes using Roboflow across all 11 tool classes</li>
-        <li>Trained a YOLOv5 object detection model — achieving <strong>95.8% mAP@0.5</strong> across all classes</li>
+        <li>Trained a YOLOv5 object detection model, achieving <strong>95.8% mAP@0.5</strong> across all classes</li>
       </ul>
       <p className="text-sm text-gray-500 mb-4 italic">
         Most instrument classes scored 0.99+ precision-recall, with the model confidently distinguishing between visually similar tools like Iris Scissors and Kelly Scissors.
@@ -31,10 +31,10 @@ export const projectExtras = {
       <ul className="text-sm text-gray-600 list-disc list-inside mb-4 space-y-1">
         <li>Upload PDFs or images of medical reports for instant AI analysis.</li>
         <li>Translates medical jargon into plain language using Google Gemini 2.0 Flash.</li>
-        <li>Multilingual support — Over 20 Languages.</li>
+        <li>Multilingual support: Over 20 Languages.</li>
         <li>Interactive Q&A lets patients ask follow-up questions in their preferred language.</li>
         <li>Text-to-speech via ElevenLabs for audio explanations with natural voice synthesis.</li>
-        <li>Privacy-first — OCR processing handled locally with Tesseract and pdfplumber.</li>
+        <li>Privacy-first: OCR processing handled locally with Tesseract and pdfplumber.</li>
       </ul>
     </>
   ),

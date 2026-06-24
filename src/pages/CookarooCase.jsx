@@ -85,7 +85,7 @@ export default function CookarooCase() {
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-10">
               <div>
                 <p className="text-xs text-gray-400 uppercase tracking-widest mb-3">
-                  AmazonNext × CodePath Design Challenge — Summer 2025
+                  AmazonNext × CodePath Design Challenge: Summer 2025
                 </p>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display leading-tight text-gray-900">
                   Cookaroo
@@ -110,7 +110,7 @@ export default function CookarooCase() {
             {/* Metadata row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-b border-gray-100 divide-x divide-gray-100">
               {[
-                { label: 'Role',     value: 'UX Designer — Visual Design & Wireframes' },
+                { label: 'Role',     value: 'UX Designer: Visual Design & Wireframes' },
                 { label: 'Tools',    value: 'Figma' },
                 { label: 'Team',     value: '5 Members' },
                 { label: 'Duration', value: 'May – June, 2025' },
@@ -127,7 +127,7 @@ export default function CookarooCase() {
           <Wrap className="pb-0">
             <Label>Background</Label>
             <p className="text-gray-700 leading-relaxed text-base mb-5">
-              This was a month-long design challenge run by <strong>AmazonNext × CodePath</strong> — and my first real introduction to UX. Our team of five was given a broad prompt and had to go from zero to a tested, presented concept in four weeks.
+              This was a month-long design challenge run by <strong>AmazonNext × CodePath</strong>, and my first real introduction to UX. Our team of five was given a broad prompt and had to go from zero to a tested, presented concept in four weeks.
             </p>
             <p className="text-gray-700 leading-relaxed text-base">
               I was the <strong>visual designer</strong> on the team. My teammates led research and strategy while I owned the design system, high-fidelity wireframes, and the interactive Figma prototype. I contributed to design decisions throughout and used this project to learn UX process by doing it under a real constraint.
@@ -163,7 +163,7 @@ export default function CookarooCase() {
             {/* Problem statement pull quote */}
             <blockquote className="border-l-2 pl-6 mb-12" style={{ borderColor: BRAND }}>
               <p className="text-xl sm:text-2xl font-montserrat font-semibold text-gray-900 leading-snug">
-                "Students report feeling <span style={{ color: BRAND }}>crushed</span> by the time, cost, and complexity involved in cooking — often defaulting to fast food despite the long-term health and financial tradeoffs."
+                "Students report feeling <span style={{ color: BRAND }}>crushed</span> by the time, cost, and complexity involved in cooking, often defaulting to fast food despite the long-term health and financial tradeoffs."
               </p>
             </blockquote>
 
@@ -207,7 +207,7 @@ export default function CookarooCase() {
                 24 interviews. One clear picture.
               </h2>
               <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
-                We conducted 24 first-hand in-depth interviews with students across multiple campuses to understand their cooking habits, frustrations, and what they actually wanted from a solution. We also used these conversations to test early concepts — including the idea of Chef Sue — and the response was consistently positive.
+                We conducted 24 first-hand in-depth interviews with students across multiple campuses to understand their cooking habits, frustrations, and what they actually wanted from a solution. We also used these conversations to test early concepts, including the idea of Chef Sue, and the response was consistently positive.
               </p>
 
               {/* Demographics grid */}
@@ -259,11 +259,11 @@ export default function CookarooCase() {
                 {
                   insight: '"Most gave up on new recipes because of research time."',
                   arrow: 'Smart Recipe Search by pantry ingredients',
-                  why:   'Removes the research step entirely — suggest meals based on what\'s already in the fridge.',
+                  why:   'Removes the research step entirely: suggest meals based on what\'s already in the fridge.',
                 },
                 {
                   insight: '"Meal prepping is a survival strategy."',
-                  arrow: 'Cook Mode — step-by-step guided instructions',
+                  arrow: 'Cook Mode: step-by-step guided instructions',
                   why:   'Turns an overwhelming task into a manageable, structured process.',
                 },
                 {
@@ -330,7 +330,7 @@ export default function CookarooCase() {
                   <div className="space-y-4">
                     {[
                       { n: '01', step: 'Searches for the Red Ladle dish', detail: 'Cookaroo finds it by recipe name and suggests a home version.' },
-                      { n: '02', step: 'Chef Sue flags allergy risks', detail: 'Peanut oil in the original recipe — Chef Sue immediately suggests a safe swap.' },
+                      { n: '02', step: 'Chef Sue flags allergy risks', detail: 'Peanut oil in the original recipe; Chef Sue immediately suggests a safe swap.' },
                       { n: '03', step: 'Enters Cook Mode', detail: 'Step-by-step guided instructions. No overwhelm, no tab-switching.' },
                       { n: '04', step: '"I\'ve never felt this confident cooking on my own."', detail: 'Stephen finishes the meal. Chef Sue made it easy.' },
                     ].map(({ n, step, detail }) => (
@@ -389,7 +389,7 @@ export default function CookarooCase() {
             <div className="bg-gray-50 rounded-2xl p-6">
               <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-3">The gap</p>
               <p className="text-sm text-gray-700 leading-relaxed">
-                None of these apps start from where a student actually is — standing in front of a half-empty fridge at 10pm, unsure what's safe to eat, with no time to research.{' '}
+                None of these apps start from where a student actually is: standing in front of a half-empty fridge at 10pm, unsure what's safe to eat, with no time to research.{' '}
                 <strong className="text-gray-900">Cookaroo is built for that exact moment.</strong>
               </p>
             </div>
@@ -403,7 +403,7 @@ export default function CookarooCase() {
                 Meet Cookaroo.
               </h2>
               <p className="text-gray-500 leading-relaxed mb-3 max-w-2xl">
-                We're a student team doing our first UX project. We didn't set out to solve every problem in the food space — we set out to solve one problem properly.
+                We're a student team doing our first UX project. We didn't set out to solve every problem in the food space. We set out to solve one problem properly.
               </p>
               <p className="text-gray-700 font-medium leading-relaxed mb-12 max-w-2xl">
                 Cookaroo does two things: helps you find something to cook with what you already have, and walks you through it with an AI that already knows your dietary needs.
@@ -415,12 +415,12 @@ export default function CookarooCase() {
                   {
                     num: '01',
                     title: 'Find what to cook',
-                    body: 'Search by ingredients already in your fridge. Your dietary restrictions are set once during onboarding — every result is already filtered for you. No research, no guessing.',
+                    body: 'Search by ingredients already in your fridge. Your dietary restrictions are set once during onboarding; every result is already filtered for you. No research, no guessing.',
                   },
                   {
                     num: '02',
                     title: 'Cook it with help',
-                    body: 'Enter Cook Mode for step-by-step guidance. Mid-recipe, Chef Sue is one tap away — real-time answers, allergy flags, and ingredient swaps without leaving the cooking flow.',
+                    body: 'Enter Cook Mode for step-by-step guidance. Mid-recipe, Chef Sue is one tap away: real-time answers, allergy flags, and ingredient swaps without leaving the cooking flow.',
                   },
                 ].map(({ num, title, body }) => (
                   <div key={title} className="bg-white rounded-2xl p-7 border border-gray-100">
@@ -432,12 +432,12 @@ export default function CookarooCase() {
               </div>
 
               {/* Chef Sue deep dive */}
-              <Label>Chef Sue — What she actually does</Label>
+              <Label>Chef Sue: What she actually does</Label>
               <div className="grid sm:grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden">
                 {[
                   {
                     cap: 'Interactive Cooking Help',
-                    body: 'Real-time answers and visual explanations mid-recipe. Ask a question while your hands are covered in flour — Chef Sue answers.',
+                    body: 'Real-time answers and visual explanations mid-recipe. Ask a question while your hands are covered in flour; Chef Sue answers.',
                   },
                   {
                     cap: 'Smart Nutrition Tweaks',
@@ -469,9 +469,9 @@ export default function CookarooCase() {
 
             <div className="grid sm:grid-cols-3 gap-6 mb-6">
               {[
-                { stage: '01 — Low-fi',  note: 'Structure and flow, no styling',          placeholder: 'Paper wireframe sketch — upload photo here' },
-                { stage: '02 — Mid-fi',  note: 'Layout refined, typography introduced',    placeholder: 'Mid-fidelity wireframe — screenshot from Figma' },
-                { stage: '03 — High-fi', note: 'Full visual system applied',               placeholder: 'High-fidelity screen — export from Figma' },
+                { stage: '01: Low-fi',  note: 'Structure and flow, no styling',          placeholder: 'Paper wireframe sketch: upload photo here' },
+                { stage: '02: Mid-fi',  note: 'Layout refined, typography introduced',    placeholder: 'Mid-fidelity wireframe: screenshot from Figma' },
+                { stage: '03: High-fi', note: 'Full visual system applied',               placeholder: 'High-fidelity screen: export from Figma' },
               ].map(({ stage, note, placeholder }) => (
                 <div key={stage}>
                   <Placeholder label={placeholder} aspect="aspect-[9/16]" />
@@ -495,23 +495,23 @@ export default function CookarooCase() {
                 {[
                   {
                     screen: 'Onboarding & Preferences',
-                    note: 'Designed to collect dietary restrictions and allergies upfront — so Chef Sue can be useful immediately. Kept it to a single preferences screen to reduce friction.',
-                    placeholder: 'Onboarding screen screenshots — export from Figma',
+                    note: 'Designed to collect dietary restrictions and allergies upfront, so Chef Sue can be useful immediately. Kept it to a single preferences screen to reduce friction.',
+                    placeholder: 'Onboarding screen screenshots: export from Figma',
                   },
                   {
                     screen: 'Home & Recipe Discovery',
                     note: 'Card-based layout for quick scanning. Recipes are surfaced based on pantry items and user preferences, not just trending content.',
-                    placeholder: 'Home screen and recipe card screenshots — export from Figma',
+                    placeholder: 'Home screen and recipe card screenshots: export from Figma',
                   },
                   {
-                    screen: 'Chef Sue — Mid-Recipe',
+                    screen: 'Chef Sue: Mid-Recipe',
                     note: 'The most critical screen. A "Discuss with Chef Sue" button appears mid-recipe, letting users ask questions, flag concerns, or request substitutions without leaving the cooking flow.',
-                    placeholder: 'Chef Sue chat / discussion screen — export from Figma',
+                    placeholder: 'Chef Sue chat / discussion screen: export from Figma',
                   },
                   {
                     screen: 'Cook Mode',
                     note: 'Step-by-step instructions with large text, single action per screen. Designed to be usable with one hand, mid-cooking.',
-                    placeholder: 'Cook Mode screen — export from Figma',
+                    placeholder: 'Cook Mode screen: export from Figma',
                   },
                   {
                     screen: 'Light & Dark Mode',
@@ -535,7 +535,7 @@ export default function CookarooCase() {
 
           {/* ─── VISION / NEXT STEPS ──────────────────────────────────────── */}
           <Wrap className="py-20">
-            <Label>What's Out of Scope — For Now</Label>
+            <Label>What's Out of Scope: For Now</Label>
             <h2 className="text-2xl sm:text-3xl font-montserrat font-semibold text-gray-900 mb-4 leading-tight">
               We focused on one problem. Here's what we left for later.
             </h2>
@@ -543,7 +543,7 @@ export default function CookarooCase() {
               There are real problems adjacent to cooking that we deliberately didn't try to solve in this MVP. Knowing your scope is part of good design.
             </p>
             <p className="text-gray-500 leading-relaxed mb-12 max-w-2xl">
-              The core question we kept coming back to was: <em>"Can we help a student go from 'I don't know what to cook' to 'I finished the meal' — safely, without stress?"</em> Everything outside that was deferred.
+              The core question we kept coming back to was: <em>"Can we help a student go from 'I don't know what to cook' to 'I finished the meal,' safely, without stress?"</em> Everything outside that was deferred.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-4">
@@ -551,7 +551,7 @@ export default function CookarooCase() {
                 {
                   label: 'Future',
                   title: 'Location-based Ingredient Finder',
-                  body: 'Helping students find where to buy missing ingredients nearby. Meaningful, but a separate problem from cooking itself — we didn\'t have the research to design it well.',
+                  body: 'Helping students find where to buy missing ingredients nearby. Meaningful, but a separate problem from cooking itself; we didn\'t have the research to design it well.',
                 },
                 {
                   label: 'Future',
@@ -582,10 +582,10 @@ export default function CookarooCase() {
             </h2>
             <div className="grid sm:grid-cols-2 gap-8">
               <p className="text-gray-600 leading-relaxed text-sm">
-                This was my first real UX project, and the biggest thing I learned is that scope is a design decision. We had ideas for a dozen features. We shipped two that actually connect to something we heard in interviews. Cutting the rest wasn't failure — it was the point. You can't design something well if you're designing everything at once.
+                This was my first real UX project, and the biggest thing I learned is that scope is a design decision. We had ideas for a dozen features. We shipped two that actually connect to something we heard in interviews. Cutting the rest wasn't failure. It was the point. You can't design something well if you're designing everything at once.
               </p>
               <p className="text-gray-600 leading-relaxed text-sm">
-                If I did this again, I'd invest earlier in usability testing — even watching three people use the prototype would have surfaced things I couldn't see myself. I'd also push for a shared component library from day one. But mostly, I'd trust the focus earlier instead of second-guessing it.
+                If I did this again, I'd invest earlier in usability testing: even watching three people use the prototype would have surfaced things I couldn't see myself. I'd also push for a shared component library from day one. But mostly, I'd trust the focus earlier instead of second-guessing it.
               </p>
             </div>
           </Wrap>
