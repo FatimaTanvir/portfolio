@@ -64,7 +64,7 @@ export default function AboutMe() {
             <a href="mailto:fatimatanvir80@gmail.com" aria-label="Email" className={contactLink}><Mail size={16}/><span className={contactText}>fatimatanvir80@gmail.com</span></a>
             <a href="https://www.instagram.com/iamfatimatanvir/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={contactLink}><Instagram size={16}/><span className={contactText}>Instagram</span></a>
             <a href="https://www.linkedin.com/in/fatimaatanvir/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={contactLink}><Linkedin size={16}/><span className={contactText}>linkedin</span></a>
-            <a href="https://drive.google.com/file/d/1-YSLSFpyreTIDwHI4SDFM-f2rJ38YBSc/view?usp=sharing" target="_blank" rel="noopener noreferrer" className={contactLink}><Paperclip size={16}/><span className={contactText}>resume</span></a>
+            <a href="https://drive.google.com/file/d/12Q6qwtyPIwyoS9ieF3p5yD3oTjOWUeJO/view?usp=sharing" target="_blank" rel="noopener noreferrer" className={contactLink}><Paperclip size={16}/><span className={contactText}>resume</span></a>
           </div>
         </div>
 
