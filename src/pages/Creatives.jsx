@@ -51,7 +51,7 @@ export default function Creatives() {
         </FadeUp>
         <FadeUp delay={300}>
           <p className="text-sm sm:text-base text-gray-600 text-center mt-5 sm:whitespace-nowrap mx-auto px-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            "I think the best designers are curious about everything, not just screens."
+            I think the best designers are curious about everything, not just screens.
 
           </p>
         </FadeUp>
