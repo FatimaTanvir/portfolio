@@ -50,7 +50,7 @@ export default function Creatives() {
           </div>
         </FadeUp>
         <FadeUp delay={300}>
-          <p className="text-sm sm:text-base text-gray-600 text-center mt-5 whitespace-nowrap mx-auto" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <p className="text-sm sm:text-base text-gray-600 text-center mt-5 sm:whitespace-nowrap mx-auto px-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             "I think the best designers are curious about everything, not just screens."
 
           </p>
@@ -122,7 +122,7 @@ export default function Creatives() {
           <Link
             to="/designs"
             onClick={() => window.scrollTo(0, 0)}
-            className="px-8 py-3 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors"
+            className="px-6 py-3 rounded-full bg-black text-white text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors text-center"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             Curious about my design work? Check it out →
