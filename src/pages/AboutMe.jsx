@@ -1,107 +1,161 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { Mail, Instagram, Linkedin, Paperclip } from 'lucide-react'
 
-const contactLink = "flex items-center gap-3 hover:text-gray-600 transition-colors group"
-const contactText = "text-sm [text-decoration-thickness:2px] [text-underline-offset:3px] group-hover:underline group-hover:[text-decoration-style:double]"
+function FadeUp({ children, delay = 0 }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
+      { threshold: 0.1 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(28px)',
+        transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function MagneticButton({ href, target, rel, className, children }) {
+  const ref = useRef(null)
+  const onMove = (e) => {
+    const el = ref.current
+    const r = el.getBoundingClientRect()
+    const x = (e.clientX - r.left - r.width / 2) * 0.35
+    const y = (e.clientY - r.top - r.height / 2) * 0.35
+    el.style.transition = 'transform 0.1s ease'
+    el.style.transform = `translate(${x}px, ${y}px)`
+  }
+  const onLeave = () => {
+    ref.current.style.transition = 'transform 0.4s ease'
+    ref.current.style.transform = 'translate(0, 0)'
+  }
+  return (
+    <a ref={ref} href={href} target={target} rel={rel}
+      className={className} onMouseMove={onMove} onMouseLeave={onLeave}>
+      {children}
+    </a>
+  )
+}
 
 export default function AboutMe() {
-  useEffect(() => { document.title = "About | Fatima Tanvir" }, [])
+  useEffect(() => { document.title = 'About | Fatima Tanvir' }, [])
 
   return (
-    <div className="min-h-screen bg-white flex flex-col md:h-screen md:overflow-hidden">
+    <div className="min-h-screen bg-white flex flex-col">
       <Navbar />
 
-      {/*MOBILE layout*/}
-      <main className="flex md:hidden flex-col flex-1 px-6 pt-8 overflow-y-auto">
-        <div className="ml-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          <h2 className="text-[clamp(3.8rem,18vw,7rem)] leading-[1.05] tracking-tight text-gray-800" style={{ fontFamily: "'Squada One', sans-serif" }}>
-            UX Engineer
-          </h2>
-          <p className="text-[clamp(1.4rem,6vw,2.5rem)] leading-snug tracking-tight text-green-600 font-light mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            with an eye for the details
-          </p>
+      {/* ── Hero ─────────────────────────────────────────────────── */}
+      {/* Mobile */}
+      <main className="flex md:hidden flex-col flex-1 px-6 pt-2 gap-8 overflow-y-auto">
+        <img src="/about/fatima-grad.webp" alt="Fatima Tanvir" className="w-full max-w-xs mx-auto object-cover rounded-[2rem] shadow-2xl" />
+        <h2 className="text-3xl font-normal text-black" style={{ fontFamily: "'Squada One', sans-serif" }}>Get to know me.</h2>
+        <div className="flex flex-col gap-5 text-black" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <p className="text-sm leading-relaxed">Having grown up between Johannesburg, Lahore, and Houston, I bring a global lens to every problem I take on. That diverse background has shaped how I connect with people across different contexts, cultures, and perspectives; which turns out to be a superpower when your passion is to understand users.</p>
+          <p className="text-sm leading-relaxed">I started on the engineering side with an undergraduate background in Computer Science and Mathematics: building systems, co-authoring research on robotics and sleep science, solving hard technical problems. But I kept hitting the same wall, the hardest part was never the code. It was making it make sense for the person using it. The Google UX Professional Certification is what really clicked for me; it gave me the tools to actually study users, map how they think, and let real findings drive what I build.</p>
+          <p className="text-sm leading-relaxed">What I love most about being a UX Design Engineer is collaborating with others to create products that actually make a difference. I enjoy blending creativity and coding as it helps me bridge the gap between design and engineering, and speak both languages when working across teams.</p>
+          <p className="text-sm leading-relaxed">When I'm not online, you'll find me training for my next race (if I'm not injured), boxing, or making Hojicha for a friend. Feel free to explore my portfolio and learn more about my journey so far.</p>
         </div>
-
-        <img src="/AboutMe.svg" alt="Fatima Tanvir" className="w-full max-w-xs mx-auto object-contain my-6" />
-
-        <div className="flex flex-col gap-4 text-black" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-          <p className="text-md ml-4 leading-relaxed">
-            Howdy! I'm a user obsessed UX Engineer from Houston, TX.
-          </p>
-          <p className="text-md ml-4 leading-relaxed">
-            Academically, I am a recent graduate from the University of Houston-Downtown
-            with a BS in Computer Science with minors in Data Science and Mathematics.I focus on attention to detail, clean UI, thoughtful UX, and writing maintainable code.<br/> <br/>
-            Beyond the classroom, I've had the opportunity to serve as President of the ACM chapter at UHD and mentor aspiring developers through CodePath.
-          </p>
-          <p className="text-md ml-4 leading-relaxed">
-           When I'm not online, you'll find me training for my next race (if I'm not injured), baking, or grabbing matcha with a friend. 
-          </p>
+        <div className="flex gap-3 mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <a href="https://drive.google.com/file/d/12Q6qwtyPIwyoS9ieF3p5yD3oTjOWUeJO/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+            className="px-6 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">Resume</a>
+          <a href="https://www.linkedin.com/in/fatimaatanvir/" target="_blank" rel="noopener noreferrer"
+            className="px-6 py-2.5 rounded-full border border-black text-black text-sm font-medium hover:bg-gray-50 transition-colors">LinkedIn</a>
         </div>
-        <div className="flex flex-col items-center pb-2">
+        <div className="flex flex-col items-center pb-4">
           <img src="/gifs/plants.gif" alt="plants" className="w-40 object-contain" />
-        </div>
-        <div className="mt-auto">
-          <Footer/>
         </div>
       </main>
 
-      {/*DESKTOP / TABLET layout*/}
-      <main className="hidden md:flex flex-1 relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 max-w-[1600px] mx-auto w-full">
+      {/* Desktop */}
+      <main className="hidden md:flex flex-1 items-start gap-16 lg:gap-24 px-8 lg:px-16 xl:px-24 pt-16 pb-0 max-w-screen-xl mx-auto w-full">
 
-        <div className="absolute left-4 sm:left-6 md:left-8 lg:left-20 xl:left-32 top-0 bottom-0 w-[24%] flex flex-col justify-start py-24">
-          <div style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            <h2 className="text-[clamp(3rem,5.5vw,5.5rem)] leading-[1.05] tracking-tight text-gray-800" style={{ fontFamily: "'Squada One', sans-serif" }}>
-              UX Engineer
+        {/* Left: bio */}
+        <div className="flex flex-col gap-6 flex-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <FadeUp delay={0}>
+            <h2 className="text-4xl lg:text-5xl font-normal text-black" style={{ fontFamily: "'Squada One', sans-serif" }}>
+              Get to know me.
             </h2>
-            <p className="text-[clamp(1.3rem,2.2vw,2.2rem)] leading-snug tracking-tight text-green-600 font-light mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              with an eye for the details
+          </FadeUp>
+          <FadeUp delay={100}>
+            <p className="text-[0.95rem] lg:text-[1.05rem] text-black leading-relaxed">
+              Having grown up between Johannesburg, Lahore, and Houston, I bring a global lens to every problem I take on. That diverse background has shaped how I connect with people across different contexts, cultures, and perspectives; which turns out to be a superpower when your passion is to understand users.
             </p>
-          </div>
-          <div className="items-left flex flex-col gap-4 sm:gap-8 md:gap-3 text-gray-400 mb-2 md:mb-3 lg:mb-4 pt-40">
-            <span className="text-sm text-gray-500 font-bold">Contacts</span>
-            <a href="mailto:fatimatanvir80@gmail.com" aria-label="Email" className={contactLink}><Mail size={16}/><span className={contactText}>fatimatanvir80@gmail.com</span></a>
-            <a href="https://www.instagram.com/iamfatimatanvir/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={contactLink}><Instagram size={16}/><span className={contactText}>Instagram</span></a>
-            <a href="https://www.linkedin.com/in/fatimaatanvir/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={contactLink}><Linkedin size={16}/><span className={contactText}>linkedin</span></a>
-            <a href="https://drive.google.com/file/d/12Q6qwtyPIwyoS9ieF3p5yD3oTjOWUeJO/view?usp=sharing" target="_blank" rel="noopener noreferrer" className={contactLink}><Paperclip size={16}/><span className={contactText}>resume</span></a>
-          </div>
+          </FadeUp>
+          <FadeUp delay={200}>
+            <p className="text-[0.95rem] lg:text-[1.05rem] text-black leading-relaxed">
+              I started on the engineering side with an undergraduate background in Computer Science and Mathematics: building systems, co-authoring research on robotics and sleep science, solving hard technical problems. But I kept hitting the same wall, the hardest part was never the code. It was making it make sense for the person using it. The Google UX Professional Certification is what really clicked for me; it gave me the tools to actually study users, map how they think, and let real findings drive what I build.
+            </p>
+          </FadeUp>
+          <FadeUp delay={300}>
+            <p className="text-[0.95rem] lg:text-[1.05rem] text-black leading-relaxed">
+              What I love most about being a UX Design Engineer is collaborating with others to create products that actually make a difference. I enjoy blending creativity and coding as it helps me bridge the gap between design and engineering, and speak both languages when working across teams.
+            </p>
+          </FadeUp>
         </div>
 
-        <div className="absolute bottom-0 flex items-end justify-center" style={{ left: '10%', right: '28%', height: '100%' }}>
+        {/* Right: photo + buttons */}
+        <div className="flex-shrink-0 w-80 lg:w-96 xl:w-[420px] self-start mt-4 flex flex-col items-center gap-3">
           <img
-            src="/AboutMe.svg"
+            src="/about/fatima-grad.webp"
             alt="Fatima Tanvir"
-            className="w-auto object-contain object-bottom"
-            style={{ height: '90%', maxHeight: '90%' }}
+            className="w-full object-cover rounded-[2.5rem] shadow-2xl"
           />
+          <div className="pt-5 flex gap-3 justify-center" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+            <MagneticButton
+              href="https://drive.google.com/file/d/12Q6qwtyPIwyoS9ieF3p5yD3oTjOWUeJO/view?usp=sharing"
+              target="_blank" rel="noopener noreferrer"
+              className="px-7 py-3 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors"
+            >Resume</MagneticButton>
+            <MagneticButton
+              href="https://www.linkedin.com/in/fatimaatanvir/"
+              target="_blank" rel="noopener noreferrer"
+              className="px-7 py-3 rounded-full border border-black text-black text-sm font-medium hover:bg-gray-50 transition-colors"
+            >LinkedIn</MagneticButton>
+          </div>
         </div>
+      </main>
 
-        <div className="absolute right-4 sm:right-6 md:right-8 lg:right-16 top-8 bottom-0 w-[35%] flex flex-col justify-center">
-          <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            Howdy! My name is Fatima Tanvir, a user-obsessed UX Engineer from Houston, TX.
+      {/* Spanning paragraph */}
+      <FadeUp delay={400}>
+        <div className="hidden md:block px-8 lg:px-16 xl:px-24 pt-6 pb-12 max-w-screen-xl mx-auto w-full" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+          <p className="text-[0.95rem] lg:text-[1.05rem] text-black leading-relaxed">
+            When I'm not online, you'll find me training for my next race (if I'm not injured), boxing, or making Hojicha for a friend. Feel free to explore my portfolio and learn more about my journey so far.
           </p>
-          <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed mt-5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            Academically, I am a recent graduate from the University of Houston-Downtown
-            with a BS in Computer Science with minors in Data Science and Mathematics. I focus on attention to detail, clean UI, thoughtful UX, and writing maintainable code.<br/> <br/>
-            Beyond the classroom, I've had the opportunity to serve as President of the ACM chapter at UHD and mentor aspiring developers through CodePath.
-          </p>
-          <p className="text-md lg:text-md xl:text-lg text-black leading-relaxed mt-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-            When I'm not online, you'll find me training for my next race (if I'm not injured), baking, or grabbing matcha with a friend.
-          </p>
-          <div className="flex flex-col items-center pt-8">
+        </div>
+      </FadeUp>
+
+      {/* ── Desk Setup + Plants ──────────────────────────────────── */}
+      <section className="py-12 px-4 lg:px-8 xl:px-12 max-w-screen-xl mx-auto w-full">
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          <a href="https://youtu.be/TyHQDUdiljc" target="_blank" rel="noopener noreferrer" className="block cursor-pointer flex-1">
+            <img src="/about/desk-setup.webp" alt="Current desk setup" className="w-full object-contain transition-opacity hover:opacity-90" />
+          </a>
+          <div className="hidden md:flex flex-col items-center gap-2 flex-shrink-0">
             <img
               src="/plants-static.png"
               alt="plants"
-              className="w-48 object-contain"
-              onMouseEnter={e => e.currentTarget.src = '/gifs/plants.gif'}
-              onMouseLeave={e => e.currentTarget.src = '/plants-static.png'}
+              className="w-72 object-contain"
+              onMouseEnter={e => { e.currentTarget.src = '/gifs/plants.gif' }}
+              onMouseLeave={e => { e.currentTarget.src = '/plants-static.png' }}
             />
-            <span className="text-xs text-gray-500 mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>Hover to bust a move :)</span>
+            <span className="text-xs text-gray-500" style={{ fontFamily: "'Montserrat', sans-serif" }}>Hover to bust a move :)</span>
           </div>
         </div>
+      </section>
 
-      </main>
+      <Footer />
     </div>
   )
 }
